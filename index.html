@@ -1,0 +1,834 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Global Ad Task Portal</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      @media (max-width: 639px) {
+        #ledger .ledger-scroll {
+          margin-left: -1rem;
+          margin-right: -1rem;
+          padding-left: 1rem;
+          padding-right: 1rem;
+        }
+
+        #ledger table {
+          font-size: 12px;
+        }
+      }
+    </style>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: {
+                primary: '#2563EB',
+                ink: '#111827',
+              },
+            },
+            fontFamily: {
+              sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+            },
+            letterSpacing: {
+              tightest: '-0.02em',
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+
+  <body class="bg-white pb-24 font-sans tracking-tight text-brand-ink antialiased md:pb-0">
+    <header class="sticky top-0 z-50 bg-white">
+      <div class="border-b border-slate-800 bg-slate-900 text-white">
+        <div class="mx-auto max-w-7xl px-4 py-2 text-[11px] font-medium leading-4 sm:px-6 sm:text-xs sm:leading-5 lg:px-8">
+          LIVE SYSTEM MONITOR:
+          <span class="inline-flex flex-wrap items-center gap-1.5 align-middle">
+            <span class="inline-block h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+            System Status: OPERATIONAL
+            <span id="system-time" class="font-mono text-[11px] text-slate-200">--:--:-- UTC</span>
+            <span
+              id="server-load"
+              class="hidden rounded-sm border border-slate-600 bg-slate-800 px-1.5 py-0.5 text-[10px] text-slate-200 sm:inline-flex"
+              >Server Load: 34%</span
+            >
+            <span
+              id="total-payouts"
+              class="hidden rounded-sm border border-slate-600 bg-slate-800 px-1.5 py-0.5 text-[10px] text-slate-200 sm:inline-flex"
+              >Total Payouts: $1,240,491</span
+            >
+          </span>
+          <span class="hidden sm:inline">| Active Nodes: 4,102 | Payouts via PayPal &amp; USDT: Instant</span>
+        </div>
+      </div>
+
+      <nav class="border-b border-slate-200 bg-white">
+        <div class="mx-auto flex min-h-14 max-w-7xl items-center justify-between px-4 py-2 sm:h-14 sm:py-0 sm:px-6 lg:px-8">
+          <a href="#" class="text-sm font-bold tracking-tightest text-brand-ink sm:text-base">GLOBAL ADS</a>
+          <div class="hidden items-center gap-4 sm:flex">
+            <ul class="flex items-center gap-6 text-sm font-medium text-slate-600">
+              <li><a class="hover:text-brand-ink" href="#">Operations</a></li>
+              <li><a class="hover:text-brand-ink" href="#ledger">Ledger</a></li>
+              <li><a class="hover:text-brand-ink" href="#">Support</a></li>
+            </ul>
+            <button
+              type="button"
+              class="rounded-md border border-slate-200 bg-white px-2.5 py-1 text-xs font-medium text-slate-600"
+            >
+              Market: Global [EN]
+            </button>
+          </div>
+          <a
+            href="#ledger"
+            class="inline-flex min-h-[40px] items-center rounded-md border border-slate-200 bg-white px-3 text-xs font-medium text-slate-700 sm:hidden"
+          >
+            Ledger
+          </a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="bg-white">
+      <section class="mx-auto grid max-w-7xl gap-6 px-4 py-8 sm:gap-8 sm:px-6 sm:py-12 lg:grid-cols-2 lg:px-8 lg:py-14">
+        <div>
+          <h1 class="text-2xl font-extrabold tracking-tightest text-brand-ink sm:text-5xl">
+            Turn Screen Time into Real-time Compensation.
+          </h1>
+          <p class="mt-3 max-w-xl text-[15px] leading-6 text-slate-600 sm:mt-4 sm:text-base sm:leading-7">
+            Participate in global brand verification tasks. Secure settlements.
+          </p>
+
+          <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+            <a
+              href="#"
+              class="flex min-h-[44px] w-full items-center justify-center rounded-md border border-brand-primary bg-brand-primary px-5 py-2.5 text-sm font-semibold text-white shadow-sm shadow-blue-500/50 transition-transform duration-200 transform-gpu hover:scale-105 sm:w-auto"
+            >
+              Start Compensation Task
+            </a>
+            <a
+              href="#"
+              class="flex min-h-[44px] w-full items-center justify-center rounded-md border border-slate-200 bg-white px-5 py-2.5 text-sm font-medium text-slate-700 shadow-sm sm:w-auto"
+            >
+              Begin Ad Verification
+            </a>
+          </div>
+        </div>
+
+        <aside class="rounded-md border border-slate-200 bg-white p-4 shadow-sm sm:p-6">
+          <h2 class="text-base font-semibold text-brand-ink">How it Works</h2>
+          <ol class="relative mt-4 space-y-3">
+            <span
+              class="pointer-events-none absolute bottom-7 left-7 top-7 w-[5px] rounded-sm bg-gradient-to-b from-blue-300 via-blue-500 to-blue-700"
+            ></span>
+
+            <li class="relative flex items-start gap-3 rounded-md border border-slate-200 bg-white p-3">
+              <span
+                class="relative z-10 inline-flex h-8 w-8 items-center justify-center rounded-md border border-brand-primary bg-white text-sm font-bold text-brand-primary"
+              >
+                1
+              </span>
+              <div>
+                <p class="text-sm font-semibold text-brand-ink">Identify Authorization</p>
+                <p class="mt-0.5 text-sm text-slate-600">Instant Portal Access</p>
+              </div>
+            </li>
+
+            <li class="relative flex items-start gap-3 rounded-md border border-slate-200 bg-slate-50 p-3">
+              <span
+                class="relative z-10 inline-flex h-8 w-8 items-center justify-center rounded-md border border-brand-primary bg-white text-sm font-bold text-brand-primary"
+              >
+                2
+              </span>
+              <div>
+                <p class="text-sm font-semibold text-brand-ink">Content Verification</p>
+                <p class="mt-0.5 text-sm text-slate-600">Evaluate Premium Ad Assets</p>
+              </div>
+            </li>
+
+            <li class="relative flex items-start gap-3 rounded-md border border-slate-200 bg-white p-3">
+              <span
+                class="relative z-10 inline-flex h-8 w-8 items-center justify-center rounded-md border border-brand-primary bg-white text-sm font-bold text-brand-primary"
+              >
+                3
+              </span>
+              <div>
+                <p class="text-sm font-semibold text-brand-ink">Funds Settlement</p>
+                <p class="mt-0.5 text-sm text-slate-600">Direct Payout via Global Rails</p>
+              </div>
+            </li>
+          </ol>
+
+          <div class="mt-5 rounded-lg bg-slate-50/80 p-3.5 sm:p-4">
+            <div class="aspect-[4/3] rounded-lg bg-white p-4 sm:aspect-video sm:p-4">
+              <div class="grid h-full grid-cols-1 gap-3.5 sm:grid-cols-2">
+                <article class="relative rounded-md bg-white p-3 shadow-sm">
+                  <span class="absolute right-2 top-2 rounded-md border border-slate-200 bg-white px-1.5 py-0.5 text-[10px] font-semibold text-slate-600">
+                    Official Campaign
+                  </span>
+                  <div class="flex items-center gap-2 text-xs font-semibold text-slate-500">
+                    <span>NIKE TASK PREVIEW</span>
+                    <span
+                      class="inline-flex h-3.5 w-3.5 items-center justify-center rounded-full bg-blue-600 text-white"
+                      title="已认证"
+                      aria-label="已认证"
+                    >
+                        <svg class="h-2.5 w-2.5" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                          <path d="M4 8.2 6.8 11 12 5.8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </span>
+                  </div>
+                  <p class="mt-2 text-sm font-semibold text-brand-ink">Compensation: $2.50 USD</p>
+                  <div class="mt-2 h-1.5 rounded-sm bg-slate-100">
+                    <div class="h-1.5 w-[92%] rounded-sm bg-gradient-to-r from-blue-500 via-sky-400 to-cyan-300 animate-pulse"></div>
+                  </div>
+                  <p class="mt-1 text-[10px] font-semibold uppercase tracking-[0.1em] text-amber-600 animate-pulse">Expiring Soon</p>
+                  <p class="mt-1 text-[11px] italic text-slate-500">
+                    Priority task for your region: Limited availability.
+                  </p>
+                  <div class="mt-1 flex items-center justify-between text-[11px]">
+                    <span class="text-slate-500">Spots Left: 14</span>
+                    <span class="font-semibold text-red-600">Closing in 12 minutes</span>
+                  </div>
+                </article>
+
+                <article class="relative rounded-md bg-white p-3 shadow-sm">
+                  <span class="absolute right-2 top-2 rounded-md border border-slate-200 bg-white px-1.5 py-0.5 text-[10px] font-semibold text-slate-600">
+                    Official Campaign
+                  </span>
+                  <div class="flex items-center gap-2 text-xs font-semibold text-slate-500">
+                    <span>APPLE TASK PREVIEW</span>
+                    <span
+                      class="inline-flex h-3.5 w-3.5 items-center justify-center rounded-full bg-blue-600 text-white"
+                      title="已认证"
+                      aria-label="已认证"
+                    >
+                        <svg class="h-2.5 w-2.5" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                          <path d="M4 8.2 6.8 11 12 5.8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </span>
+                  </div>
+                  <p class="mt-2 text-sm font-semibold text-brand-ink">Compensation: $3.10 USD</p>
+                  <div class="mt-2 h-1.5 rounded-sm bg-slate-100">
+                    <div class="h-1.5 w-[85%] rounded-sm bg-gradient-to-r from-blue-500 via-sky-400 to-cyan-300"></div>
+                  </div>
+                  <div class="mt-1 flex items-center justify-between text-[11px]">
+                    <span class="text-slate-500">Spots Left: 27</span>
+                    <span class="font-medium text-slate-500">In progress</span>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <section class="border-y border-slate-200 bg-white">
+        <div class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
+          <p class="text-xs font-semibold uppercase tracking-[0.12em] text-slate-500">Official Distribution Partners</p>
+          <div class="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4">
+            <div class="rounded-md border border-slate-200 bg-slate-50 px-4 py-3 text-center text-sm font-semibold text-slate-500">NIKE</div>
+            <div class="rounded-md border border-slate-200 bg-slate-50 px-4 py-3 text-center text-sm font-semibold text-slate-500">APPLE</div>
+            <div class="rounded-md border border-slate-200 bg-slate-50 px-4 py-3 text-center text-sm font-semibold text-slate-500">STARBUCKS</div>
+            <div class="rounded-md border border-slate-200 bg-slate-50 px-4 py-3 text-center text-sm font-semibold text-slate-500">GOOGLE</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="ledger" class="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
+        <div class="flex items-end justify-between gap-3">
+          <h2 class="text-base font-semibold text-brand-ink sm:text-lg">Live Settlement Ledger</h2>
+          <span class="text-[11px] text-slate-500 sm:hidden">← 左右滑动</span>
+        </div>
+        <div class="ledger-scroll mt-3 overflow-x-auto rounded-md border border-slate-200 shadow-sm sm:mt-4">
+          <table class="w-full min-w-[560px] text-[13px] leading-tight sm:min-w-full">
+            <thead class="border-b border-slate-200 bg-slate-50 text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-500">
+              <tr>
+                <th class="px-4 py-1.5 text-left">Time</th>
+                <th class="px-4 py-1.5 text-left">User</th>
+                <th class="px-4 py-1.5 text-left">Method</th>
+                <th class="px-4 py-1.5 text-left">Amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b border-slate-200 bg-white">
+                <td class="ledger-time px-4 py-1 text-slate-600">2m ago</td>
+                <td class="px-4 py-1 text-brand-ink">
+                  <span class="inline-flex items-center gap-2 leading-none font-medium">
+                    <span
+                      class="inline-flex h-5 w-5 shrink-0 items-center justify-center overflow-hidden rounded-full border border-slate-200 bg-white text-[11px] leading-none shadow-sm"
+                      >🇺🇸</span
+                    >
+                    <span class="font-medium">US-AX29</span>
+                  </span>
+                </td>
+                <td class="px-4 py-1 text-slate-700">
+                  <span class="inline-flex items-center gap-2">
+                    <svg class="h-4 w-4" viewBox="0 0 16 16" aria-hidden="true">
+                      <rect x="1" y="1" width="14" height="14" rx="2" fill="#2563EB" />
+                      <path d="M5 4.5h4.2a2.3 2.3 0 1 1 0 4.6H7.2V12H5V4.5Zm2.2 2.9h1.8a.8.8 0 0 0 0-1.6H7.2v1.6Z" fill="#fff" />
+                    </svg>
+                    PayPal
+                  </span>
+                </td>
+                <td class="px-4 py-1">
+                  <div class="leading-tight">
+                    <span class="font-mono font-bold text-brand-ink">$2.50 USD</span>
+                    <p class="txn-id mt-0.5 text-[9px] font-extralight tracking-[0.06em] text-slate-300"></p>
+                  </div>
+                </td>
+              </tr>
+              <tr class="border-b border-slate-200 bg-slate-50">
+                <td class="ledger-time px-4 py-1 text-slate-600">4m ago</td>
+                <td class="px-4 py-1 text-brand-ink">
+                  <span class="inline-flex items-center gap-2 leading-none font-medium">
+                    <span
+                      class="inline-flex h-5 w-5 shrink-0 items-center justify-center overflow-hidden rounded-full border border-slate-200 bg-white text-[11px] leading-none shadow-sm"
+                      >🇬🇧</span
+                    >
+                    <span class="font-medium">UK-HM84</span>
+                  </span>
+                </td>
+                <td class="px-4 py-1 text-slate-700">
+                  <span class="inline-flex items-center gap-2">
+                    <svg class="h-4 w-4" viewBox="0 0 16 16" aria-hidden="true">
+                      <circle cx="8" cy="8" r="7" fill="#F3BA2F" />
+                      <path d="M8 3.2 10.1 5.3 8 7.4 5.9 5.3 8 3.2Zm0 5.4 2.1 2.1L8 12.8l-2.1-2.1L8 8.6Z" fill="#111827" />
+                    </svg>
+                    Binance
+                  </span>
+                </td>
+                <td class="px-4 py-1">
+                  <div class="leading-tight">
+                    <span class="font-mono font-bold text-brand-ink">$3.10 USD</span>
+                    <p class="txn-id mt-0.5 text-[9px] font-extralight tracking-[0.06em] text-slate-300"></p>
+                  </div>
+                </td>
+              </tr>
+              <tr class="border-b border-slate-200 bg-white">
+                <td class="ledger-time px-4 py-1 text-slate-600">7m ago</td>
+                <td class="px-4 py-1 text-brand-ink">
+                  <span class="inline-flex items-center gap-2 leading-none font-medium">
+                    <span
+                      class="inline-flex h-5 w-5 shrink-0 items-center justify-center overflow-hidden rounded-full border border-slate-200 bg-white text-[11px] leading-none shadow-sm"
+                      >🇿🇦</span
+                    >
+                    <span class="font-medium">ZA-ZR13</span>
+                  </span>
+                </td>
+                <td class="px-4 py-1 text-slate-700">
+                  <span class="inline-flex items-center gap-2">
+                    <svg class="h-4 w-4" viewBox="0 0 16 16" aria-hidden="true">
+                      <rect x="1" y="1" width="14" height="14" rx="2" fill="#2563EB" />
+                      <path d="M5 4.5h4.2a2.3 2.3 0 1 1 0 4.6H7.2V12H5V4.5Zm2.2 2.9h1.8a.8.8 0 0 0 0-1.6H7.2v1.6Z" fill="#fff" />
+                    </svg>
+                    PayPal
+                  </span>
+                </td>
+                <td class="px-4 py-1">
+                  <div class="leading-tight">
+                    <span class="font-mono font-bold text-brand-ink">$2.20 USD</span>
+                    <p class="txn-id mt-0.5 text-[9px] font-extralight tracking-[0.06em] text-slate-300"></p>
+                  </div>
+                </td>
+              </tr>
+              <tr class="border-b border-slate-200 bg-slate-50">
+                <td class="ledger-time px-4 py-1 text-slate-600">9m ago</td>
+                <td class="px-4 py-1 text-brand-ink">
+                  <span class="inline-flex items-center gap-2 leading-none font-medium">
+                    <span
+                      class="inline-flex h-5 w-5 shrink-0 items-center justify-center overflow-hidden rounded-full border border-slate-200 bg-white text-[11px] leading-none shadow-sm"
+                      >🇺🇸</span
+                    >
+                    <span class="font-medium">US-QP66</span>
+                  </span>
+                </td>
+                <td class="px-4 py-1 text-slate-700">
+                  <span class="inline-flex items-center gap-2">
+                    <svg class="h-4 w-4" viewBox="0 0 16 16" aria-hidden="true">
+                      <circle cx="8" cy="8" r="7" fill="#F3BA2F" />
+                      <path d="M8 3.2 10.1 5.3 8 7.4 5.9 5.3 8 3.2Zm0 5.4 2.1 2.1L8 12.8l-2.1-2.1L8 8.6Z" fill="#111827" />
+                    </svg>
+                    Binance
+                  </span>
+                </td>
+                <td class="px-4 py-1">
+                  <div class="leading-tight">
+                    <span class="font-mono font-bold text-brand-ink">$4.40 USD</span>
+                    <p class="txn-id mt-0.5 text-[9px] font-extralight tracking-[0.06em] text-slate-300"></p>
+                  </div>
+                </td>
+              </tr>
+              <tr class="border-b border-slate-200 bg-white">
+                <td class="ledger-time px-4 py-1 text-slate-600">12m ago</td>
+                <td class="px-4 py-1 text-brand-ink">
+                  <span class="inline-flex items-center gap-2 leading-none font-medium">
+                    <span
+                      class="inline-flex h-5 w-5 shrink-0 items-center justify-center overflow-hidden rounded-full border border-slate-200 bg-white text-[11px] leading-none shadow-sm"
+                      >🇦🇺</span
+                    >
+                    <span class="font-medium">AU-NK52</span>
+                  </span>
+                </td>
+                <td class="px-4 py-1 text-slate-700">
+                  <span class="inline-flex items-center gap-2">
+                    <svg class="h-4 w-4" viewBox="0 0 16 16" aria-hidden="true">
+                      <rect x="1" y="1" width="14" height="14" rx="2" fill="#2563EB" />
+                      <path d="M5 4.5h4.2a2.3 2.3 0 1 1 0 4.6H7.2V12H5V4.5Zm2.2 2.9h1.8a.8.8 0 0 0 0-1.6H7.2v1.6Z" fill="#fff" />
+                    </svg>
+                    PayPal
+                  </span>
+                </td>
+                <td class="px-4 py-1">
+                  <div class="leading-tight">
+                    <span class="font-mono font-bold text-brand-ink">$3.80 USD</span>
+                    <p class="txn-id mt-0.5 text-[9px] font-extralight tracking-[0.06em] text-slate-300"></p>
+                  </div>
+                </td>
+              </tr>
+              <tr class="border-b border-slate-200 bg-slate-50">
+                <td class="ledger-time px-4 py-1 text-slate-600">15m ago</td>
+                <td class="px-4 py-1 text-brand-ink">
+                  <span class="inline-flex items-center gap-2 leading-none font-medium">
+                    <span
+                      class="inline-flex h-5 w-5 shrink-0 items-center justify-center overflow-hidden rounded-full border border-slate-200 bg-white text-[11px] leading-none shadow-sm"
+                      >🇨🇦</span
+                    >
+                    <span class="font-medium">CA-LV07</span>
+                  </span>
+                </td>
+                <td class="px-4 py-1 text-slate-700">
+                  <span class="inline-flex items-center gap-2">
+                    <svg class="h-4 w-4" viewBox="0 0 16 16" aria-hidden="true">
+                      <circle cx="8" cy="8" r="7" fill="#F3BA2F" />
+                      <path d="M8 3.2 10.1 5.3 8 7.4 5.9 5.3 8 3.2Zm0 5.4 2.1 2.1L8 12.8l-2.1-2.1L8 8.6Z" fill="#111827" />
+                    </svg>
+                    Binance
+                  </span>
+                </td>
+                <td class="px-4 py-1">
+                  <div class="leading-tight">
+                    <span class="font-mono font-bold text-brand-ink">$5.20 USD</span>
+                    <p class="txn-id mt-0.5 text-[9px] font-extralight tracking-[0.06em] text-slate-300"></p>
+                  </div>
+                </td>
+              </tr>
+              <tr class="bg-white">
+                <td class="ledger-time px-4 py-1 text-slate-600">18m ago</td>
+                <td class="px-4 py-1 text-brand-ink">
+                  <span class="inline-flex items-center gap-2 leading-none font-medium">
+                    <span
+                      class="inline-flex h-5 w-5 shrink-0 items-center justify-center overflow-hidden rounded-full border border-slate-200 bg-white text-[11px] leading-none shadow-sm"
+                      >🇩🇪</span
+                    >
+                    <span class="font-medium">DE-RM31</span>
+                  </span>
+                </td>
+                <td class="px-4 py-1 text-slate-700">
+                  <span class="inline-flex items-center gap-2">
+                    <svg class="h-4 w-4" viewBox="0 0 16 16" aria-hidden="true">
+                      <rect x="1" y="1" width="14" height="14" rx="2" fill="#2563EB" />
+                      <path d="M5 4.5h4.2a2.3 2.3 0 1 1 0 4.6H7.2V12H5V4.5Zm2.2 2.9h1.8a.8.8 0 0 0 0-1.6H7.2v1.6Z" fill="#fff" />
+                    </svg>
+                    PayPal
+                  </span>
+                </td>
+                <td class="px-4 py-1">
+                  <div class="leading-tight">
+                    <span class="font-mono font-bold text-brand-ink">$2.90 USD</span>
+                    <p class="txn-id mt-0.5 text-[9px] font-extralight tracking-[0.06em] text-slate-300"></p>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="trust-support" class="bg-slate-50 py-8 sm:py-12 lg:py-14">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="grid gap-6 lg:grid-cols-2">
+            <div class="rounded-lg border border-slate-200 bg-white p-4 sm:p-5">
+              <p class="text-xs font-semibold uppercase tracking-[0.12em] text-slate-500">Trust &amp; Support</p>
+              <h2 class="mt-2 text-xl font-semibold text-slate-900">Frequently Asked Questions</h2>
+              <p class="mt-1 text-xs text-slate-500">Quick answers for payout timing, limits, account safety, and verification rules.</p>
+
+              <div id="faq-list" class="mt-4 space-y-2">
+                <details class="faq-item group rounded-md border border-slate-200 bg-white" open>
+                  <summary id="faq-q-1" aria-controls="faq-a-1" aria-expanded="true" class="flex min-h-[44px] cursor-pointer list-none items-center justify-between gap-3 px-3 py-2 text-left text-sm font-semibold text-slate-900 [&::-webkit-details-marker]:hidden">
+                    <span>How is the compensation calculated?</span>
+                    <span class="relative inline-flex h-5 w-5 items-center justify-center rounded border border-slate-300 text-slate-500">
+                      <span class="absolute h-0.5 w-2.5 bg-current"></span>
+                      <span class="absolute h-2.5 w-0.5 bg-current transition-opacity duration-200 group-open:opacity-0"></span>
+                    </span>
+                  </summary>
+                  <p id="faq-a-1" role="region" aria-labelledby="faq-q-1" class="px-3 pb-3 text-xs leading-5 text-slate-600">
+                    Compensation is based on campaign complexity, accuracy score, and your recent completion consistency.
+                  </p>
+                </details>
+
+                <details class="faq-item group rounded-md border border-slate-200 bg-white">
+                  <summary id="faq-q-2" aria-controls="faq-a-2" aria-expanded="false" class="flex min-h-[44px] cursor-pointer list-none items-center justify-between gap-3 px-3 py-2 text-left text-sm font-semibold text-slate-900 [&::-webkit-details-marker]:hidden">
+                    <span>When do I receive my payout?</span>
+                    <span class="relative inline-flex h-5 w-5 items-center justify-center rounded border border-slate-300 text-slate-500">
+                      <span class="absolute h-0.5 w-2.5 bg-current"></span>
+                      <span class="absolute h-2.5 w-0.5 bg-current transition-opacity duration-200 group-open:opacity-0"></span>
+                    </span>
+                  </summary>
+                  <p id="faq-a-2" role="region" aria-labelledby="faq-q-2" class="px-3 pb-3 text-xs leading-5 text-slate-600">
+                    Most settlements are released instantly after validation checks pass.
+                  </p>
+                </details>
+
+                <details class="faq-item group rounded-md border border-slate-200 bg-white">
+                  <summary id="faq-q-3" aria-controls="faq-a-3" aria-expanded="false" class="flex min-h-[44px] cursor-pointer list-none items-center justify-between gap-3 px-3 py-2 text-left text-sm font-semibold text-slate-900 [&::-webkit-details-marker]:hidden">
+                    <span>Is there a limit to daily tasks?</span>
+                    <span class="relative inline-flex h-5 w-5 items-center justify-center rounded border border-slate-300 text-slate-500">
+                      <span class="absolute h-0.5 w-2.5 bg-current"></span>
+                      <span class="absolute h-2.5 w-0.5 bg-current transition-opacity duration-200 group-open:opacity-0"></span>
+                    </span>
+                  </summary>
+                  <p id="faq-a-3" role="region" aria-labelledby="faq-q-3" class="px-3 pb-3 text-xs leading-5 text-slate-600">
+                    Yes. Limits vary by region and account tier and grow with stable high-quality output.
+                  </p>
+                </details>
+
+                <details class="faq-item group rounded-md border border-slate-200 bg-white">
+                  <summary id="faq-q-4" aria-controls="faq-a-4" aria-expanded="false" class="flex min-h-[44px] cursor-pointer list-none items-center justify-between gap-3 px-3 py-2 text-left text-sm font-semibold text-slate-900 [&::-webkit-details-marker]:hidden">
+                    <span>Which payout methods are supported?</span>
+                    <span class="relative inline-flex h-5 w-5 items-center justify-center rounded border border-slate-300 text-slate-500">
+                      <span class="absolute h-0.5 w-2.5 bg-current"></span>
+                      <span class="absolute h-2.5 w-0.5 bg-current transition-opacity duration-200 group-open:opacity-0"></span>
+                    </span>
+                  </summary>
+                  <p id="faq-a-4" role="region" aria-labelledby="faq-q-4" class="px-3 pb-3 text-xs leading-5 text-slate-600">
+                    We currently support PayPal and USDT in most available operating markets.
+                  </p>
+                </details>
+
+                <details class="faq-item group rounded-md border border-slate-200 bg-white">
+                  <summary id="faq-q-5" aria-controls="faq-a-5" aria-expanded="false" class="flex min-h-[44px] cursor-pointer list-none items-center justify-between gap-3 px-3 py-2 text-left text-sm font-semibold text-slate-900 [&::-webkit-details-marker]:hidden">
+                    <span>What happens if a task is marked invalid?</span>
+                    <span class="relative inline-flex h-5 w-5 items-center justify-center rounded border border-slate-300 text-slate-500">
+                      <span class="absolute h-0.5 w-2.5 bg-current"></span>
+                      <span class="absolute h-2.5 w-0.5 bg-current transition-opacity duration-200 group-open:opacity-0"></span>
+                    </span>
+                  </summary>
+                  <p id="faq-a-5" role="region" aria-labelledby="faq-q-5" class="px-3 pb-3 text-xs leading-5 text-slate-600">
+                    You receive reason codes instantly and can continue with the next eligible task without delays.
+                  </p>
+                </details>
+              </div>
+
+              <div class="mt-3 rounded-md border border-slate-200 bg-white px-3 py-2.5 shadow-sm">
+                <div class="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-500">
+                  <span class="inline-block h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                  Live Activity
+                </div>
+                <p id="activity-line" class="mt-1 text-sm font-medium text-slate-700 transition-all duration-300">
+                  User US-AX29 just completed NIKE task - $2.50 earned (14s ago)
+                </p>
+              </div>
+              <p class="mt-3 text-[11px] text-slate-500">Need account-specific help? Use Help Center for a priority review ticket.</p>
+            </div>
+
+            <div class="rounded-lg border border-slate-200 bg-white p-4 sm:p-5">
+              <p class="text-xs font-semibold uppercase tracking-[0.12em] text-slate-500">Verified User Feedback</p>
+              <h3 class="mt-2 text-xl font-semibold text-slate-900">Latest Reviews</h3>
+              <p class="mt-1 text-xs text-slate-500">Recent settlement feedback from active users across multiple regions.</p>
+
+              <div class="mt-4 space-y-2.5">
+                <article class="rounded-md border border-slate-200 bg-white p-3">
+                  <div class="flex items-start justify-between gap-2">
+                    <div>
+                      <p class="text-sm font-semibold text-slate-900">A. Lewis <span class="align-middle">🇺🇸</span></p>
+                      <p class="text-[11px] text-slate-500">US-AX29 · 2026-04-21</p>
+                    </div>
+                    <span class="rounded-full bg-slate-100 px-2 py-0.5 text-[10px] font-medium text-slate-600">Verified</span>
+                  </div>
+                  <p class="mt-2 text-xs leading-5 text-slate-600">“Third payout this week. Verification flow is straightforward.”</p>
+                </article>
+
+                <article class="rounded-md border border-slate-200 bg-white p-3">
+                  <div class="flex items-start justify-between gap-2">
+                    <div>
+                      <p class="text-sm font-semibold text-slate-900">N. Patel <span class="align-middle">🇬🇧</span></p>
+                      <p class="text-[11px] text-slate-500">UK-HM84 · 2026-04-19</p>
+                    </div>
+                    <span class="rounded-full bg-slate-100 px-2 py-0.5 text-[10px] font-medium text-slate-600">Verified</span>
+                  </div>
+                  <p class="mt-2 text-xs leading-5 text-slate-600">“Queue is stable, and payout confirmation appears right after completion.”</p>
+                </article>
+
+                <article class="rounded-md border border-slate-200 bg-white p-3">
+                  <div class="flex items-start justify-between gap-2">
+                    <div>
+                      <p class="text-sm font-semibold text-slate-900">T. Mokoena <span class="align-middle">🇿🇦</span></p>
+                      <p class="text-[11px] text-slate-500">ZA-ZR13 · 2026-04-18</p>
+                    </div>
+                    <span class="rounded-full bg-slate-100 px-2 py-0.5 text-[10px] font-medium text-slate-600">Verified</span>
+                  </div>
+                  <p class="mt-2 text-xs leading-5 text-slate-600">“Interface feels clean and support replies quickly for region-limit questions.”</p>
+                </article>
+
+                <article class="rounded-md border border-slate-200 bg-white p-3">
+                  <div class="flex items-start justify-between gap-2">
+                    <div>
+                      <p class="text-sm font-semibold text-slate-900">M. Garcia <span class="align-middle">🇪🇸</span></p>
+                      <p class="text-[11px] text-slate-500">ES-MG44 · 2026-04-17</p>
+                    </div>
+                    <span class="rounded-full bg-slate-100 px-2 py-0.5 text-[10px] font-medium text-slate-600">Verified</span>
+                  </div>
+                  <p class="mt-2 text-xs leading-5 text-slate-600">“Received two settlements today. Status updates are fast and predictable.”</p>
+                </article>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-8 rounded-lg border border-slate-200 bg-white p-4">
+            <p class="text-xs font-semibold uppercase tracking-[0.12em] text-slate-500">Trusted by Global Media Agencies</p>
+            <div class="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-5">
+              <div class="rounded-md border border-slate-200 bg-slate-50 px-3 py-2 text-center text-sm font-semibold tracking-wide text-slate-500">NIKE</div>
+              <div class="rounded-md border border-slate-200 bg-slate-50 px-3 py-2 text-center text-sm font-semibold tracking-wide text-slate-500">COCA-COLA</div>
+              <div class="rounded-md border border-slate-200 bg-slate-50 px-3 py-2 text-center text-sm font-semibold tracking-wide text-slate-500">AMAZON</div>
+              <div class="rounded-md border border-slate-200 bg-slate-50 px-3 py-2 text-center text-sm font-semibold tracking-wide text-slate-500">SAMSUNG</div>
+              <div class="rounded-md border border-slate-200 bg-slate-50 px-3 py-2 text-center text-sm font-semibold tracking-wide text-slate-500">TOYOTA</div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="border-t border-slate-200 bg-white">
+        <div class="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-10 lg:px-8">
+        <div class="grid gap-8 lg:grid-cols-12">
+          <section class="lg:col-span-4">
+            <div class="inline-flex items-center gap-2 rounded-md border border-slate-200 bg-slate-50 px-2.5 py-1.5">
+              <span class="inline-flex h-6 w-6 items-center justify-center rounded bg-slate-900 text-xs font-bold text-white">GA</span>
+              <span class="text-sm font-semibold tracking-tight text-slate-900">GLOBAL ADS</span>
+            </div>
+            <p class="mt-3 max-w-xs text-sm leading-6 text-slate-600">
+              Leading the global transition to transparent ad verification.
+            </p>
+          </section>
+
+          <nav class="grid grid-cols-2 gap-6 sm:grid-cols-3 lg:col-span-5" aria-label="Footer links">
+            <div>
+              <p class="text-[11px] font-semibold uppercase tracking-[0.12em] text-slate-500">Resources</p>
+              <ul class="mt-2.5 space-y-1.5 text-sm text-slate-600">
+                <li><a href="#" class="hover:text-slate-900">System Status</a></li>
+                <li><a href="#" class="hover:text-slate-900">Node Map</a></li>
+                <li><a href="#" class="hover:text-slate-900">Help Center</a></li>
+              </ul>
+            </div>
+
+            <div>
+              <p class="text-[11px] font-semibold uppercase tracking-[0.12em] text-slate-500">Legal</p>
+              <ul class="mt-2.5 space-y-1.5 text-sm text-slate-600">
+                <li><a href="#" class="hover:text-slate-900">Terms of Service</a></li>
+                <li><a href="#" class="hover:text-slate-900">Privacy Policy</a></li>
+                <li><a href="#" class="hover:text-slate-900">Cookie Policy</a></li>
+              </ul>
+            </div>
+
+            <div>
+              <p class="text-[11px] font-semibold uppercase tracking-[0.12em] text-slate-500">Company</p>
+              <ul class="mt-2.5 space-y-1.5 text-sm text-slate-600">
+                <li><a href="#" class="hover:text-slate-900">About</a></li>
+                <li><a href="#" class="hover:text-slate-900">Compliance</a></li>
+                <li><a href="#" class="hover:text-slate-900">Contact</a></li>
+              </ul>
+            </div>
+          </nav>
+
+          <aside class="lg:col-span-3">
+            <p class="text-[11px] font-semibold uppercase tracking-[0.12em] text-slate-500">Trusted Partner</p>
+            <div class="mt-2.5 space-y-2">
+              <div class="flex items-center gap-2 rounded-md border border-slate-200 bg-slate-50 px-2.5 py-2 text-xs text-slate-600 grayscale">
+                <svg class="h-4 w-4" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="M8 1.8 3 4v3.7c0 3.2 2.2 5.9 5 6.5 2.8-.6 5-3.3 5-6.5V4L8 1.8Z" stroke="currentColor" stroke-width="1.2" />
+                  <path d="m5.7 8 1.5 1.5L10.3 6.4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                SSL Secured
+              </div>
+              <div class="flex items-center gap-2 rounded-md border border-slate-200 bg-slate-50 px-2.5 py-2 text-xs text-slate-600 grayscale">
+                <svg class="h-4 w-4" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <rect x="2" y="7" width="12" height="7" rx="1.5" stroke="currentColor" stroke-width="1.2" />
+                  <path d="M5 7V5.8a3 3 0 0 1 6 0V7" stroke="currentColor" stroke-width="1.2" />
+                </svg>
+                256-bit Encryption
+              </div>
+              <div class="flex items-center gap-2 rounded-md border border-slate-200 bg-slate-50 px-2.5 py-2 text-xs text-slate-600 grayscale">
+                <svg class="h-4 w-4" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.2" />
+                  <path d="M5 8.2 7 10.2l4-4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                Standards Verified
+              </div>
+            </div>
+          </aside>
+        </div>
+
+        <div class="mt-8 border-t border-slate-200 pt-4 text-[11px] text-slate-500">
+          © 2026 Global Cash Ads. Regulated by Digital Media Standards. Server Location: Frankfurt, DE.
+        </div>
+      </div>
+    </footer>
+
+    <div class="fixed inset-x-0 bottom-0 z-40 border-t border-slate-700 bg-[#0F172A] p-3 pb-[calc(0.75rem+env(safe-area-inset-bottom))] md:hidden">
+      <button
+        type="button"
+        class="flex w-full min-h-[44px] items-center justify-center rounded-md bg-white px-4 py-2.5 text-sm font-semibold text-[#0F172A] shadow-sm"
+      >
+        Start Verified Task
+      </button>
+    </div>
+
+    <script>
+      (function () {
+        const el = document.getElementById('system-time');
+        const footerTimeEl = document.getElementById('footer-server-time');
+        const serverLoadEl = document.getElementById('server-load');
+        const totalPayoutsEl = document.getElementById('total-payouts');
+        const activityLineEl = document.getElementById('activity-line');
+        const faqListEl = document.getElementById('faq-list');
+        const makeTxnId = () => `#TXN-${Math.floor(Math.random() * 9000) + 1000}`;
+        let serverLoad = 34;
+        let totalPayouts = 1240491;
+        const activityFeed = [
+          { user: 'US-AX29', brand: 'NIKE', amount: 2.5, ago: 14 },
+          { user: 'UK-HM84', brand: 'APPLE', amount: 3.1, ago: 22 },
+          { user: 'DE-RM31', brand: 'GOOGLE', amount: 2.9, ago: 9 },
+          { user: 'AU-NK52', brand: 'STARBUCKS', amount: 3.8, ago: 31 },
+        ];
+        let activityIndex = 0;
+
+        const formatNumber = (value) => value.toLocaleString('en-US');
+
+        document.querySelectorAll('.txn-id').forEach((node) => {
+          node.textContent = makeTxnId();
+        });
+
+        const update = () => {
+          const now = new Date();
+          const utcTime = `${now.toISOString().slice(11, 19)} UTC`;
+          el.textContent = utcTime;
+          if (footerTimeEl) footerTimeEl.textContent = utcTime;
+        };
+
+        const updateMetrics = () => {
+          serverLoad = Math.min(45, Math.max(28, serverLoad + Math.floor(Math.random() * 5) - 2));
+          totalPayouts = Math.max(1239000, totalPayouts + Math.floor(Math.random() * 381) - 140);
+          serverLoadEl.textContent = `Server Load: ${serverLoad}%`;
+          totalPayoutsEl.textContent = `Total Payouts: $${formatNumber(totalPayouts)}`;
+        };
+
+        const makeLedgerTime = (index) => {
+          if (index < 3) {
+            const sec = Math.floor(Math.random() * 45) + 12;
+            return `${sec}s ago`;
+          }
+          const min = index + 1 + Math.floor(Math.random() * 2);
+          const sec = Math.floor(Math.random() * 60);
+          return sec === 0 ? `${min}m ago` : `${min}m ${sec}s ago`;
+        };
+
+        document.querySelectorAll('.ledger-time').forEach((node, idx) => {
+          node.textContent = makeLedgerTime(idx);
+        });
+
+        const renderActivity = () => {
+          if (!activityLineEl) return;
+          const current = activityFeed[activityIndex];
+          activityLineEl.classList.add('opacity-0', 'translate-y-1');
+          setTimeout(() => {
+            activityLineEl.textContent = `User ${current.user} just completed ${current.brand} task - $${current.amount.toFixed(2)} earned (${current.ago}s ago)`;
+            activityLineEl.classList.remove('opacity-0', 'translate-y-1');
+          }, 140);
+        };
+
+        const tickActivityTime = () => {
+          activityFeed.forEach((item) => {
+            item.ago += 1;
+          });
+          renderActivity();
+        };
+
+        const rotateActivity = () => {
+          activityIndex = (activityIndex + 1) % activityFeed.length;
+          renderActivity();
+        };
+
+        const setupFaqAccordion = () => {
+          if (!faqListEl) return;
+          const faqItems = Array.from(faqListEl.querySelectorAll('.faq-item'));
+          const summaries = faqItems
+            .map((item) => item.querySelector('summary'))
+            .filter(Boolean);
+
+          const setFaqOpen = (item, open) => {
+            item.open = open;
+            const summary = item.querySelector('summary');
+            if (summary) summary.setAttribute('aria-expanded', String(open));
+          };
+
+          let openedFound = false;
+          faqItems.forEach((item) => {
+            if (item.open && !openedFound) {
+              openedFound = true;
+              setFaqOpen(item, true);
+            } else {
+              setFaqOpen(item, false);
+            }
+          });
+          if (!openedFound && faqItems[0]) setFaqOpen(faqItems[0], true);
+
+          faqItems.forEach((item) => {
+            item.addEventListener('toggle', () => {
+              if (!item.open) {
+                setFaqOpen(item, false);
+                return;
+              }
+              faqItems.forEach((other) => {
+                if (other !== item) setFaqOpen(other, false);
+              });
+              setFaqOpen(item, true);
+            });
+          });
+
+          summaries.forEach((summary, index) => {
+            summary.addEventListener('keydown', (event) => {
+              let nextIndex = -1;
+              if (event.key === 'ArrowDown') nextIndex = (index + 1) % summaries.length;
+              if (event.key === 'ArrowUp') nextIndex = (index - 1 + summaries.length) % summaries.length;
+              if (event.key === 'Home') nextIndex = 0;
+              if (event.key === 'End') nextIndex = summaries.length - 1;
+              if (nextIndex === -1) return;
+              event.preventDefault();
+              summaries[nextIndex].focus();
+            });
+          });
+        };
+
+        setupFaqAccordion();
+        update();
+        updateMetrics();
+        renderActivity();
+        setInterval(update, 1000);
+        setInterval(updateMetrics, 3500);
+        setInterval(tickActivityTime, 1000);
+        setInterval(rotateActivity, 2600);
+      })();
+    </script>
+  </body>
+</html>
