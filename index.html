@@ -3,18 +3,162 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Global Ad Task Portal</title>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
+    <meta name="description" content="Global Ads Validation Node Portal preview page" />
+    <title>Global Ad Validation Node Portal</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
+      .cta-breath {
+        animation: cta-breath 2.8s ease-in-out infinite;
+      }
+
+      .node-alert-jump {
+        animation: node-alert-jump 1.4s ease-in-out infinite;
+      }
+
+      .reward-bait-tag {
+        animation: reward-bait-tag 1.2s ease-in-out infinite;
+      }
+
+      @keyframes cta-breath {
+        0%,
+        100% {
+          box-shadow: 0 8px 18px rgba(59, 130, 246, 0.28);
+          transform: scale(1);
+        }
+        50% {
+          box-shadow: 0 10px 22px rgba(6, 182, 212, 0.36);
+          transform: scale(1.015);
+        }
+      }
+
+      @keyframes node-alert-jump {
+        0%,
+        100% {
+          transform: translateY(0);
+          opacity: 0.95;
+        }
+        50% {
+          transform: translateY(-1px);
+          opacity: 1;
+        }
+      }
+
+      @keyframes reward-bait-tag {
+        0%,
+        100% {
+          transform: scale(1);
+          filter: saturate(1);
+        }
+        50% {
+          transform: scale(1.06);
+          filter: saturate(1.15);
+        }
+      }
+
+      .ledger-row-enter {
+        animation: ledger-row-enter 0.45s ease-out;
+      }
+
+      .ledger-row-shift {
+        animation: ledger-row-shift 0.45s ease-out;
+      }
+
+      @keyframes ledger-row-enter {
+        from {
+          transform: translateY(-8px);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      @keyframes ledger-row-shift {
+        from {
+          transform: translateY(-4px);
+        }
+        to {
+          transform: translateY(0);
+        }
+      }
+
+      .partner-spotlight {
+        background:
+          radial-gradient(circle at 8% 16%, rgba(59, 130, 246, 0.12), transparent 42%),
+          radial-gradient(circle at 92% 8%, rgba(14, 165, 233, 0.1), transparent 36%),
+          linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 250, 252, 0.9) 100%);
+      }
+
+      .partner-card {
+        transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+      }
+
+      .partner-card:hover {
+        transform: translateY(-4px);
+        border-color: rgba(148, 163, 184, 0.45);
+        box-shadow: 0 14px 32px rgba(15, 23, 42, 0.1);
+      }
+
+      .campaign-image {
+        transition: transform 0.45s ease;
+      }
+
+      .partner-card:hover .campaign-image {
+        transform: scale(1.06);
+      }
+
+      .live-signal-dot {
+        animation: live-signal-dot 1.6s ease-in-out infinite;
+      }
+
+      @keyframes live-signal-dot {
+        0%,
+        100% {
+          transform: scale(1);
+          opacity: 0.85;
+        }
+        50% {
+          transform: scale(1.35);
+          opacity: 1;
+        }
+      }
+
+      .task-progress-tip {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        height: 8px;
+        width: 8px;
+        border-radius: 9999px;
+        transform: translate(45%, -50%);
+        animation: task-progress-tip-pulse 1.5s ease-in-out infinite;
+      }
+
+      @keyframes task-progress-tip-pulse {
+        0%,
+        100% {
+          transform: translate(45%, -50%) scale(1);
+          opacity: 0.85;
+        }
+        50% {
+          transform: translate(45%, -50%) scale(1.2);
+          opacity: 1;
+        }
+      }
+
       @media (max-width: 639px) {
+        .hero-title {
+          font-size: 1.95rem;
+          line-height: 1.15;
+        }
+
+        #registration-status .slots-badge {
+          font-size: 10px;
+          line-height: 1.2;
+        }
+
         #ledger .ledger-scroll {
           margin-left: -1rem;
           margin-right: -1rem;
@@ -24,6 +168,18 @@
 
         #ledger table {
           font-size: 12px;
+        }
+
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+          scroll-behavior: auto !important;
         }
       }
     </style>
@@ -38,7 +194,7 @@
               },
             },
             fontFamily: {
-              sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+              sans: ['ui-sans-serif', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'sans-serif'],
             },
             letterSpacing: {
               tightest: '-0.02em',
@@ -69,7 +225,7 @@
               >Total Payouts: $1,240,491</span
             >
           </span>
-          <span class="hidden sm:inline">| Active Nodes: 4,102 | Payouts via PayPal &amp; USDT: Instant</span>
+          <span class="hidden sm:inline">| Active Nodes: 4,102 | Bank Transfer Settlements: Fast</span>
         </div>
       </div>
 
@@ -100,517 +256,388 @@
     </header>
 
     <main class="bg-white">
-      <section class="mx-auto grid max-w-7xl gap-6 px-4 py-8 sm:gap-8 sm:px-6 sm:py-12 lg:grid-cols-2 lg:px-8 lg:py-14">
-        <div>
-          <h1 class="text-2xl font-extrabold tracking-tightest text-brand-ink sm:text-5xl">
-            Turn Screen Time into Real-time Compensation.
-          </h1>
-          <p class="mt-3 max-w-xl text-[15px] leading-6 text-slate-600 sm:mt-4 sm:text-base sm:leading-7">
-            Participate in global brand verification tasks. Secure settlements.
+      <section class="mx-auto grid max-w-7xl gap-4 px-4 py-6 sm:gap-5 sm:px-6 sm:py-8 lg:grid-cols-2 lg:px-8 lg:py-10">
+        <div class="relative overflow-hidden rounded-2xl border border-slate-200 bg-gradient-to-br from-white via-slate-50 to-blue-50/50 p-3 sm:p-4 lg:p-4">
+          <span class="pointer-events-none absolute -right-8 -top-8 h-24 w-24 rounded-full bg-blue-200/60 blur-2xl"></span>
+          <span class="pointer-events-none absolute -bottom-10 -left-8 h-24 w-24 rounded-full bg-sky-200/60 blur-2xl"></span>
+
+          <p class="inline-flex items-center gap-2 rounded-full border border-blue-100 bg-blue-50 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.08em] text-blue-700">
+            <span class="inline-block h-1.5 w-1.5 rounded-full bg-blue-600"></span>
+            Verified Global Workflow
           </p>
 
-          <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+          <h1 class="hero-title mt-3 text-3xl font-extrabold leading-tight tracking-tightest text-brand-ink sm:text-5xl">
+            Global Video Traffic Validation Node
+          </h1>
+          <p class="mt-2.5 max-w-xl text-[15px] leading-6 text-slate-600 sm:mt-3 sm:text-base sm:leading-7">
+            Support global brand ecosystems by validating ad-stream authenticity and earn secure rewards.
+          </p>
+
+          <div class="mt-4 flex flex-col gap-2.5 sm:flex-row sm:flex-wrap">
             <a
               href="#"
               class="flex min-h-[44px] w-full items-center justify-center rounded-md border border-brand-primary bg-brand-primary px-5 py-2.5 text-sm font-semibold text-white shadow-sm shadow-blue-500/50 transition-transform duration-200 transform-gpu hover:scale-105 sm:w-auto"
             >
-              Start Compensation Task
+              Start Compensation Traffic Stream
             </a>
             <a
               href="#"
-              class="flex min-h-[44px] w-full items-center justify-center rounded-md border border-slate-200 bg-white px-5 py-2.5 text-sm font-medium text-slate-700 shadow-sm sm:w-auto"
+              class="flex min-h-[44px] w-full items-center justify-center rounded-md border border-slate-200 bg-white px-5 py-2.5 text-sm font-medium text-slate-700 shadow-sm transition-colors hover:border-slate-300 hover:bg-slate-50 sm:w-auto"
             >
               Begin Ad Verification
             </a>
           </div>
+
+          <div class="mt-3 grid gap-2 sm:grid-cols-3">
+            <div class="rounded-lg border border-slate-200 bg-white/90 px-3 py-2.5">
+              <p class="text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-500">Avg Traffic Stream</p>
+              <p class="mt-1 text-sm font-bold text-slate-900">~90 seconds</p>
+            </div>
+            <div class="rounded-lg border border-slate-200 bg-white/90 px-3 py-2.5">
+              <p class="text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-500">Accuracy</p>
+              <p class="mt-1 text-sm font-bold text-slate-900">98.7% verified</p>
+            </div>
+            <div class="rounded-lg border border-slate-200 bg-white/90 px-3 py-2.5">
+              <p class="text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-500">Payout Speed</p>
+              <p class="mt-1 text-sm font-bold text-slate-900">under 60s</p>
+            </div>
+          </div>
+
+          <div id="registration-status" class="mt-2 rounded-lg border border-amber-200 bg-amber-50/70 px-3 py-2.5">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <p class="text-[11px] font-semibold uppercase tracking-[0.1em] text-amber-700">Registration Status</p>
+              <span class="slots-badge rounded-full bg-amber-100 px-2 py-0.5 text-[11px] font-semibold text-amber-800">Global Slots: 92% Full</span>
+            </div>
+            <p id="local-node-spots" aria-live="polite" class="node-alert-jump mt-1.5 text-[12px] font-semibold text-orange-700">
+              Local Node: Singapore - 3 Spots Remaining
+            </p>
+            <p id="detected-node" aria-live="polite" class="mt-1 text-[11px] font-medium text-amber-800/90">
+              Detected Node: Locating...
+            </p>
+            <p class="mt-2 text-sm font-medium text-amber-900">
+              Next node reset in:
+              <span id="node-reset-timer" aria-live="polite" class="font-mono font-bold">04:52</span>
+            </p>
+            <p class="mt-1 text-[11px] text-amber-700/90">Current intake is near capacity. Missing this window may defer activation to the next reset cycle.</p>
+          </div>
+
+          <ul class="mt-2.5 space-y-1 text-sm text-slate-600">
+            <li class="flex items-start gap-2">
+              <span class="mt-[5px] inline-block h-2 w-2 rounded-full bg-emerald-500"></span>
+              Work with vetted campaigns from global brands.
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="mt-[5px] inline-block h-2 w-2 rounded-full bg-emerald-500"></span>
+              Completion and payout status updates in real time.
+            </li>
+          </ul>
+
         </div>
 
-        <aside class="rounded-md border border-slate-200 bg-white p-4 shadow-sm sm:p-6">
+        <aside class="flex flex-col rounded-md border border-slate-200 bg-white p-2.5 shadow-sm sm:p-3">
           <h2 class="text-base font-semibold text-brand-ink">How it Works</h2>
-          <ol class="relative mt-4 space-y-3">
+          <ol class="relative mt-2.5 space-y-2">
             <span
               class="pointer-events-none absolute bottom-7 left-7 top-7 w-[5px] rounded-sm bg-gradient-to-b from-blue-300 via-blue-500 to-blue-700"
             ></span>
 
-            <li class="relative flex items-start gap-3 rounded-md border border-slate-200 bg-white p-3">
+            <li class="relative flex items-start gap-2.5 rounded-md border border-slate-200 bg-white p-2">
               <span
                 class="relative z-10 inline-flex h-8 w-8 items-center justify-center rounded-md border border-brand-primary bg-white text-sm font-bold text-brand-primary"
               >
                 1
               </span>
               <div>
-                <p class="text-sm font-semibold text-brand-ink">Identify Authorization</p>
-                <p class="mt-0.5 text-sm text-slate-600">Instant Portal Access</p>
+                <p class="text-sm font-semibold text-brand-ink">Secure Membership</p>
+                <p class="mt-0.5 text-sm text-slate-600">Lock in your region's Node Incentives quota.</p>
               </div>
             </li>
 
-            <li class="relative flex items-start gap-3 rounded-md border border-slate-200 bg-slate-50 p-3">
+            <li class="relative flex items-start gap-2.5 rounded-md border border-slate-200 bg-slate-50 p-2">
               <span
                 class="relative z-10 inline-flex h-8 w-8 items-center justify-center rounded-md border border-brand-primary bg-white text-sm font-bold text-brand-primary"
               >
                 2
               </span>
               <div>
-                <p class="text-sm font-semibold text-brand-ink">Content Verification</p>
-                <p class="mt-0.5 text-sm text-slate-600">Evaluate Premium Ad Assets</p>
+                <p class="text-sm font-semibold text-brand-ink">Stream Syncing</p>
+                <p class="mt-0.5 text-sm text-slate-600">Watch 15s clips to complete Stream Syncing.</p>
               </div>
             </li>
 
-            <li class="relative flex items-start gap-3 rounded-md border border-slate-200 bg-white p-3">
+            <li class="relative flex items-start gap-2.5 rounded-md border border-slate-200 bg-white p-2">
               <span
                 class="relative z-10 inline-flex h-8 w-8 items-center justify-center rounded-md border border-brand-primary bg-white text-sm font-bold text-brand-primary"
               >
                 3
               </span>
               <div>
-                <p class="text-sm font-semibold text-brand-ink">Funds Settlement</p>
-                <p class="mt-0.5 text-sm text-slate-600">Direct Payout via Global Rails</p>
+                <p class="text-sm font-semibold text-brand-ink">Cash Out</p>
+                <p class="mt-0.5 text-sm text-slate-600">Withdraw directly to your preferred bank account.</p>
               </div>
             </li>
           </ol>
 
-          <div class="mt-5 rounded-lg bg-slate-50/80 p-3.5 sm:p-4">
-            <div class="aspect-[4/3] rounded-lg bg-white p-4 sm:aspect-video sm:p-4">
-              <div class="grid h-full grid-cols-1 gap-3.5 sm:grid-cols-2">
-                <article class="relative rounded-md bg-white p-3 shadow-sm">
-                  <span class="absolute right-2 top-2 rounded-md border border-slate-200 bg-white px-1.5 py-0.5 text-[10px] font-semibold text-slate-600">
-                    Official Campaign
-                  </span>
-                  <div class="flex items-center gap-2 text-xs font-semibold text-slate-500">
-                    <span>NIKE TASK PREVIEW</span>
-                    <span
-                      class="inline-flex h-3.5 w-3.5 items-center justify-center rounded-full bg-blue-600 text-white"
-                      title="已认证"
-                      aria-label="已认证"
-                    >
+          <div class="mt-3">
+              <div class="grid grid-cols-1 gap-2 sm:grid-cols-2">
+                <article class="group overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+                  <div class="w-full overflow-hidden">
+                    <img
+                      src="https://images.unsplash.com/photo-1514996937319-344454492b37?auto=format&fit=crop&w=1200&q=80"
+                      alt="Nike traffic stream preview frame"
+                      class="aspect-video w-full rounded-t-2xl bg-slate-100 object-cover transition-transform duration-300 group-hover:scale-105"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div class="p-3 sm:p-3.5">
+                    <div class="mb-2 flex items-start justify-between gap-2">
+                      <span id="reward-bait-tag" aria-live="polite" class="reward-bait-tag rounded-md bg-gradient-to-r from-orange-500 to-red-500 px-2 py-0.5 text-[10px] font-bold uppercase tracking-[0.08em] text-white shadow-sm">
+                        2x BONUS
+                      </span>
+                      <span class="rounded-md bg-slate-100 px-1.5 py-0.5 text-[10px] font-semibold text-slate-600">
+                        Official Campaign
+                      </span>
+                    </div>
+                    <div class="flex items-center gap-2 text-xs font-semibold text-slate-500">
+                      <span>NIKE TRAFFIC STREAM PREVIEW</span>
+                      <span
+                        class="inline-flex h-3.5 w-3.5 items-center justify-center rounded-full bg-blue-600 text-white"
+                        title="Verified"
+                        aria-label="Verified"
+                      >
                         <svg class="h-2.5 w-2.5" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                           <path d="M4 8.2 6.8 11 12 5.8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
-                    </span>
-                  </div>
-                  <p class="mt-2 text-sm font-semibold text-brand-ink">Compensation: $2.50 USD</p>
-                  <div class="mt-2 h-1.5 rounded-sm bg-slate-100">
-                    <div class="h-1.5 w-[92%] rounded-sm bg-gradient-to-r from-blue-500 via-sky-400 to-cyan-300 animate-pulse"></div>
-                  </div>
-                  <p class="mt-1 text-[10px] font-semibold uppercase tracking-[0.1em] text-amber-600 animate-pulse">Expiring Soon</p>
-                  <p class="mt-1 text-[11px] italic text-slate-500">
-                    Priority task for your region: Limited availability.
-                  </p>
-                  <div class="mt-1 flex items-center justify-between text-[11px]">
-                    <span class="text-slate-500">Spots Left: 14</span>
-                    <span class="font-semibold text-red-600">Closing in 12 minutes</span>
+                      </span>
+                    </div>
+                    <p class="mt-1.5 text-sm font-semibold text-brand-ink">Compensation: $2.50 USD</p>
+                    <div class="mt-1.5 h-1.5 rounded-sm bg-slate-100">
+                      <div class="h-1.5 w-[92%] rounded-sm bg-gradient-to-r from-blue-500 via-sky-400 to-cyan-300 animate-pulse"></div>
+                    </div>
+                    <p class="mt-1 text-[10px] font-semibold uppercase tracking-[0.1em] text-amber-600 animate-pulse">Expiring Soon</p>
+                    <p class="mt-1 text-[11px] italic text-slate-500">
+                      Priority traffic stream for your region: Limited availability.
+                    </p>
+                    <div class="mt-1 flex items-center justify-between text-[11px]">
+                      <span id="hero-task-slots" aria-live="polite" class="font-semibold text-amber-700">Slots: 14/15 left</span>
+                      <span id="hero-task-countdown" aria-live="polite" class="font-semibold text-red-600">Closing in 11:42</span>
+                    </div>
                   </div>
                 </article>
 
-                <article class="relative rounded-md bg-white p-3 shadow-sm">
-                  <span class="absolute right-2 top-2 rounded-md border border-slate-200 bg-white px-1.5 py-0.5 text-[10px] font-semibold text-slate-600">
-                    Official Campaign
-                  </span>
-                  <div class="flex items-center gap-2 text-xs font-semibold text-slate-500">
-                    <span>APPLE TASK PREVIEW</span>
-                    <span
-                      class="inline-flex h-3.5 w-3.5 items-center justify-center rounded-full bg-blue-600 text-white"
-                      title="已认证"
-                      aria-label="已认证"
-                    >
+                <article class="group overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+                  <div class="w-full overflow-hidden">
+                    <img
+                      src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=1200&q=80"
+                      alt="Apple traffic stream preview frame"
+                      class="aspect-video w-full rounded-t-2xl bg-slate-100 object-cover transition-transform duration-300 group-hover:scale-105"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div class="p-3 sm:p-3.5">
+                    <div class="mb-2 flex items-start justify-end gap-2">
+                      <span class="rounded-md bg-slate-100 px-1.5 py-0.5 text-[10px] font-semibold text-slate-600">
+                        Official Campaign
+                      </span>
+                    </div>
+                    <div class="flex items-center gap-2 text-xs font-semibold text-slate-500">
+                      <span>APPLE TRAFFIC STREAM PREVIEW</span>
+                      <span
+                        class="inline-flex h-3.5 w-3.5 items-center justify-center rounded-full bg-blue-600 text-white"
+                        title="Verified"
+                        aria-label="Verified"
+                      >
                         <svg class="h-2.5 w-2.5" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                           <path d="M4 8.2 6.8 11 12 5.8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
-                    </span>
-                  </div>
-                  <p class="mt-2 text-sm font-semibold text-brand-ink">Compensation: $3.10 USD</p>
-                  <div class="mt-2 h-1.5 rounded-sm bg-slate-100">
-                    <div class="h-1.5 w-[85%] rounded-sm bg-gradient-to-r from-blue-500 via-sky-400 to-cyan-300"></div>
-                  </div>
-                  <div class="mt-1 flex items-center justify-between text-[11px]">
-                    <span class="text-slate-500">Spots Left: 27</span>
-                    <span class="font-medium text-slate-500">In progress</span>
+                      </span>
+                    </div>
+                    <p class="mt-1.5 text-sm font-semibold text-brand-ink">Compensation: $3.10 USD</p>
+                    <div class="mt-1.5 h-1.5 rounded-sm bg-slate-100">
+                      <div class="h-1.5 w-[85%] rounded-sm bg-gradient-to-r from-blue-500 via-sky-400 to-cyan-300"></div>
+                    </div>
+                    <div class="mt-1 flex items-center justify-between text-[11px]">
+                      <span class="text-slate-500">Spots Left: 27</span>
+                      <span class="font-medium text-slate-500">In progress</span>
+                    </div>
                   </div>
                 </article>
               </div>
-            </div>
           </div>
         </aside>
       </section>
 
-      <section class="border-y border-slate-200 bg-white">
-        <div class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
-          <p class="text-xs font-semibold uppercase tracking-[0.12em] text-slate-500">Official Distribution Partners</p>
-          <div class="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4">
-            <div class="rounded-md border border-slate-200 bg-slate-50 px-4 py-3 text-center text-sm font-semibold text-slate-500">NIKE</div>
-            <div class="rounded-md border border-slate-200 bg-slate-50 px-4 py-3 text-center text-sm font-semibold text-slate-500">APPLE</div>
-            <div class="rounded-md border border-slate-200 bg-slate-50 px-4 py-3 text-center text-sm font-semibold text-slate-500">STARBUCKS</div>
-            <div class="rounded-md border border-slate-200 bg-slate-50 px-4 py-3 text-center text-sm font-semibold text-slate-500">GOOGLE</div>
+      <section id="campaign-gallery" class="relative overflow-hidden border-y border-slate-200 bg-slate-50/60">
+        <span class="pointer-events-none absolute -top-20 left-[8%] h-48 w-48 rounded-full bg-sky-200/30 blur-3xl"></span>
+        <span class="pointer-events-none absolute -bottom-24 right-[6%] h-52 w-52 rounded-full bg-blue-200/30 blur-3xl"></span>
+
+        <div class="mx-auto max-w-7xl px-4 py-5 sm:px-6 sm:py-6 lg:px-8">
+          <div class="partner-spotlight relative rounded-2xl border border-slate-200/80 px-3.5 py-1.5 shadow-sm sm:px-4 sm:py-2 lg:px-5">
+            <div class="flex flex-col gap-2.5 sm:flex-row sm:items-end sm:justify-between">
+              <div>
+                <p class="text-xs font-semibold uppercase tracking-[0.12em] text-slate-500">Official Partners</p>
+                <h2 class="mt-2 text-xl font-semibold text-slate-900 sm:text-2xl">Live Campaign Gallery</h2>
+                <p class="mt-1 text-sm text-slate-500">
+                  Payout, region, and demand in one view.
+                </p>
+              </div>
+
+              <div class="flex flex-wrap items-center gap-2 text-[11px]">
+                <span class="inline-flex items-center gap-1.5 rounded-full border border-emerald-200 bg-emerald-50 px-2.5 py-1 font-semibold text-emerald-700">
+                  <span class="live-signal-dot inline-block h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
+                  Live feed active
+                </span>
+                <span class="rounded-full border border-slate-200 bg-white px-2.5 py-1 font-semibold text-slate-600">12 active campaigns</span>
+                <span class="rounded-full border border-slate-200 bg-white px-2.5 py-1 font-semibold text-slate-600">Updated 30s ago</span>
+              </div>
+            </div>
+
+            <div id="campaign-cards-grid" class="mt-2.5 grid grid-cols-1 gap-2.5 sm:grid-cols-2 lg:grid-cols-4"></div>
           </div>
         </div>
       </section>
 
-      <section id="ledger" class="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
+      <section id="ledger" class="mx-auto max-w-7xl px-4 py-6 sm:px-6 sm:py-7 lg:px-8">
         <div class="flex items-end justify-between gap-3">
           <h2 class="text-base font-semibold text-brand-ink sm:text-lg">Live Settlement Ledger</h2>
-          <span class="text-[11px] text-slate-500 sm:hidden">← 左右滑动</span>
+          <span class="text-[11px] text-slate-500 sm:hidden">← Swipe horizontally</span>
         </div>
-        <div class="ledger-scroll mt-3 overflow-x-auto rounded-md border border-slate-200 shadow-sm sm:mt-4">
-          <table class="w-full min-w-[560px] text-[13px] leading-tight sm:min-w-full">
-            <thead class="border-b border-slate-200 bg-slate-50 text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-500">
-              <tr>
-                <th class="px-4 py-1.5 text-left">Time</th>
-                <th class="px-4 py-1.5 text-left">User</th>
-                <th class="px-4 py-1.5 text-left">Method</th>
-                <th class="px-4 py-1.5 text-left">Amount</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr class="border-b border-slate-200 bg-white">
-                <td class="ledger-time px-4 py-1 text-slate-600">2m ago</td>
-                <td class="px-4 py-1 text-brand-ink">
-                  <span class="inline-flex items-center gap-2 leading-none font-medium">
-                    <span
-                      class="inline-flex h-5 w-5 shrink-0 items-center justify-center overflow-hidden rounded-full border border-slate-200 bg-white text-[11px] leading-none shadow-sm"
-                      >🇺🇸</span
-                    >
-                    <span class="font-medium">US-AX29</span>
-                  </span>
-                </td>
-                <td class="px-4 py-1 text-slate-700">
-                  <span class="inline-flex items-center gap-2">
-                    <svg class="h-4 w-4" viewBox="0 0 16 16" aria-hidden="true">
-                      <rect x="1" y="1" width="14" height="14" rx="2" fill="#2563EB" />
-                      <path d="M5 4.5h4.2a2.3 2.3 0 1 1 0 4.6H7.2V12H5V4.5Zm2.2 2.9h1.8a.8.8 0 0 0 0-1.6H7.2v1.6Z" fill="#fff" />
-                    </svg>
-                    PayPal
-                  </span>
-                </td>
-                <td class="px-4 py-1">
-                  <div class="leading-tight">
-                    <span class="font-mono font-bold text-brand-ink">$2.50 USD</span>
-                    <p class="txn-id mt-0.5 text-[9px] font-extralight tracking-[0.06em] text-slate-300"></p>
-                  </div>
-                </td>
-              </tr>
-              <tr class="border-b border-slate-200 bg-slate-50">
-                <td class="ledger-time px-4 py-1 text-slate-600">4m ago</td>
-                <td class="px-4 py-1 text-brand-ink">
-                  <span class="inline-flex items-center gap-2 leading-none font-medium">
-                    <span
-                      class="inline-flex h-5 w-5 shrink-0 items-center justify-center overflow-hidden rounded-full border border-slate-200 bg-white text-[11px] leading-none shadow-sm"
-                      >🇬🇧</span
-                    >
-                    <span class="font-medium">UK-HM84</span>
-                  </span>
-                </td>
-                <td class="px-4 py-1 text-slate-700">
-                  <span class="inline-flex items-center gap-2">
-                    <svg class="h-4 w-4" viewBox="0 0 16 16" aria-hidden="true">
-                      <circle cx="8" cy="8" r="7" fill="#F3BA2F" />
-                      <path d="M8 3.2 10.1 5.3 8 7.4 5.9 5.3 8 3.2Zm0 5.4 2.1 2.1L8 12.8l-2.1-2.1L8 8.6Z" fill="#111827" />
-                    </svg>
-                    Binance
-                  </span>
-                </td>
-                <td class="px-4 py-1">
-                  <div class="leading-tight">
-                    <span class="font-mono font-bold text-brand-ink">$3.10 USD</span>
-                    <p class="txn-id mt-0.5 text-[9px] font-extralight tracking-[0.06em] text-slate-300"></p>
-                  </div>
-                </td>
-              </tr>
-              <tr class="border-b border-slate-200 bg-white">
-                <td class="ledger-time px-4 py-1 text-slate-600">7m ago</td>
-                <td class="px-4 py-1 text-brand-ink">
-                  <span class="inline-flex items-center gap-2 leading-none font-medium">
-                    <span
-                      class="inline-flex h-5 w-5 shrink-0 items-center justify-center overflow-hidden rounded-full border border-slate-200 bg-white text-[11px] leading-none shadow-sm"
-                      >🇿🇦</span
-                    >
-                    <span class="font-medium">ZA-ZR13</span>
-                  </span>
-                </td>
-                <td class="px-4 py-1 text-slate-700">
-                  <span class="inline-flex items-center gap-2">
-                    <svg class="h-4 w-4" viewBox="0 0 16 16" aria-hidden="true">
-                      <rect x="1" y="1" width="14" height="14" rx="2" fill="#2563EB" />
-                      <path d="M5 4.5h4.2a2.3 2.3 0 1 1 0 4.6H7.2V12H5V4.5Zm2.2 2.9h1.8a.8.8 0 0 0 0-1.6H7.2v1.6Z" fill="#fff" />
-                    </svg>
-                    PayPal
-                  </span>
-                </td>
-                <td class="px-4 py-1">
-                  <div class="leading-tight">
-                    <span class="font-mono font-bold text-brand-ink">$2.20 USD</span>
-                    <p class="txn-id mt-0.5 text-[9px] font-extralight tracking-[0.06em] text-slate-300"></p>
-                  </div>
-                </td>
-              </tr>
-              <tr class="border-b border-slate-200 bg-slate-50">
-                <td class="ledger-time px-4 py-1 text-slate-600">9m ago</td>
-                <td class="px-4 py-1 text-brand-ink">
-                  <span class="inline-flex items-center gap-2 leading-none font-medium">
-                    <span
-                      class="inline-flex h-5 w-5 shrink-0 items-center justify-center overflow-hidden rounded-full border border-slate-200 bg-white text-[11px] leading-none shadow-sm"
-                      >🇺🇸</span
-                    >
-                    <span class="font-medium">US-QP66</span>
-                  </span>
-                </td>
-                <td class="px-4 py-1 text-slate-700">
-                  <span class="inline-flex items-center gap-2">
-                    <svg class="h-4 w-4" viewBox="0 0 16 16" aria-hidden="true">
-                      <circle cx="8" cy="8" r="7" fill="#F3BA2F" />
-                      <path d="M8 3.2 10.1 5.3 8 7.4 5.9 5.3 8 3.2Zm0 5.4 2.1 2.1L8 12.8l-2.1-2.1L8 8.6Z" fill="#111827" />
-                    </svg>
-                    Binance
-                  </span>
-                </td>
-                <td class="px-4 py-1">
-                  <div class="leading-tight">
-                    <span class="font-mono font-bold text-brand-ink">$4.40 USD</span>
-                    <p class="txn-id mt-0.5 text-[9px] font-extralight tracking-[0.06em] text-slate-300"></p>
-                  </div>
-                </td>
-              </tr>
-              <tr class="border-b border-slate-200 bg-white">
-                <td class="ledger-time px-4 py-1 text-slate-600">12m ago</td>
-                <td class="px-4 py-1 text-brand-ink">
-                  <span class="inline-flex items-center gap-2 leading-none font-medium">
-                    <span
-                      class="inline-flex h-5 w-5 shrink-0 items-center justify-center overflow-hidden rounded-full border border-slate-200 bg-white text-[11px] leading-none shadow-sm"
-                      >🇦🇺</span
-                    >
-                    <span class="font-medium">AU-NK52</span>
-                  </span>
-                </td>
-                <td class="px-4 py-1 text-slate-700">
-                  <span class="inline-flex items-center gap-2">
-                    <svg class="h-4 w-4" viewBox="0 0 16 16" aria-hidden="true">
-                      <rect x="1" y="1" width="14" height="14" rx="2" fill="#2563EB" />
-                      <path d="M5 4.5h4.2a2.3 2.3 0 1 1 0 4.6H7.2V12H5V4.5Zm2.2 2.9h1.8a.8.8 0 0 0 0-1.6H7.2v1.6Z" fill="#fff" />
-                    </svg>
-                    PayPal
-                  </span>
-                </td>
-                <td class="px-4 py-1">
-                  <div class="leading-tight">
-                    <span class="font-mono font-bold text-brand-ink">$3.80 USD</span>
-                    <p class="txn-id mt-0.5 text-[9px] font-extralight tracking-[0.06em] text-slate-300"></p>
-                  </div>
-                </td>
-              </tr>
-              <tr class="border-b border-slate-200 bg-slate-50">
-                <td class="ledger-time px-4 py-1 text-slate-600">15m ago</td>
-                <td class="px-4 py-1 text-brand-ink">
-                  <span class="inline-flex items-center gap-2 leading-none font-medium">
-                    <span
-                      class="inline-flex h-5 w-5 shrink-0 items-center justify-center overflow-hidden rounded-full border border-slate-200 bg-white text-[11px] leading-none shadow-sm"
-                      >🇨🇦</span
-                    >
-                    <span class="font-medium">CA-LV07</span>
-                  </span>
-                </td>
-                <td class="px-4 py-1 text-slate-700">
-                  <span class="inline-flex items-center gap-2">
-                    <svg class="h-4 w-4" viewBox="0 0 16 16" aria-hidden="true">
-                      <circle cx="8" cy="8" r="7" fill="#F3BA2F" />
-                      <path d="M8 3.2 10.1 5.3 8 7.4 5.9 5.3 8 3.2Zm0 5.4 2.1 2.1L8 12.8l-2.1-2.1L8 8.6Z" fill="#111827" />
-                    </svg>
-                    Binance
-                  </span>
-                </td>
-                <td class="px-4 py-1">
-                  <div class="leading-tight">
-                    <span class="font-mono font-bold text-brand-ink">$5.20 USD</span>
-                    <p class="txn-id mt-0.5 text-[9px] font-extralight tracking-[0.06em] text-slate-300"></p>
-                  </div>
-                </td>
-              </tr>
-              <tr class="bg-white">
-                <td class="ledger-time px-4 py-1 text-slate-600">18m ago</td>
-                <td class="px-4 py-1 text-brand-ink">
-                  <span class="inline-flex items-center gap-2 leading-none font-medium">
-                    <span
-                      class="inline-flex h-5 w-5 shrink-0 items-center justify-center overflow-hidden rounded-full border border-slate-200 bg-white text-[11px] leading-none shadow-sm"
-                      >🇩🇪</span
-                    >
-                    <span class="font-medium">DE-RM31</span>
-                  </span>
-                </td>
-                <td class="px-4 py-1 text-slate-700">
-                  <span class="inline-flex items-center gap-2">
-                    <svg class="h-4 w-4" viewBox="0 0 16 16" aria-hidden="true">
-                      <rect x="1" y="1" width="14" height="14" rx="2" fill="#2563EB" />
-                      <path d="M5 4.5h4.2a2.3 2.3 0 1 1 0 4.6H7.2V12H5V4.5Zm2.2 2.9h1.8a.8.8 0 0 0 0-1.6H7.2v1.6Z" fill="#fff" />
-                    </svg>
-                    PayPal
-                  </span>
-                </td>
-                <td class="px-4 py-1">
-                  <div class="leading-tight">
-                    <span class="font-mono font-bold text-brand-ink">$2.90 USD</span>
-                    <p class="txn-id mt-0.5 text-[9px] font-extralight tracking-[0.06em] text-slate-300"></p>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+        <div class="mt-2 overflow-hidden rounded-md border border-slate-200 sm:mt-2.5">
+          <div class="ledger-scroll max-h-[300px] overflow-auto">
+            <table class="w-full min-w-[520px] text-[13px] leading-tight sm:min-w-full">
+              <thead class="sticky top-0 border-b border-slate-200 bg-slate-50 text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-500">
+                <tr>
+                  <th class="px-4 py-1 text-left">Time</th>
+                  <th class="px-4 py-1 text-left">User</th>
+                  <th class="px-4 py-1 text-left">Method</th>
+                  <th class="px-4 py-1 text-left">Amount</th>
+                </tr>
+              </thead>
+              <tbody id="ledger-body"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="mt-2.5 rounded-md border border-slate-200 bg-slate-50/50 p-2 sm:p-2.5">
+          <form id="ledger-join-form" class="space-y-2">
+            <div class="grid grid-cols-2 gap-2">
+              <label class="flex flex-col gap-0.5">
+                <span class="text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-500">Name</span>
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Name"
+                  autocomplete="name"
+                  required
+                  class="h-9 w-full rounded-md border border-slate-200 bg-white px-2.5 text-[13px] text-slate-800 outline-none transition-colors placeholder:text-slate-400 focus:border-slate-400"
+                />
+              </label>
+              <label class="flex flex-col gap-0.5">
+                <span class="text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-500">City</span>
+                <input
+                  type="text"
+                  name="city"
+                  placeholder="City"
+                  autocomplete="address-level2"
+                  required
+                  class="h-9 w-full rounded-md border border-slate-200 bg-white px-2.5 text-[13px] text-slate-800 outline-none transition-colors placeholder:text-slate-400 focus:border-slate-400"
+                />
+              </label>
+            </div>
+
+            <label class="flex flex-col gap-0.5">
+              <span class="text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-500">Telegram</span>
+              <input
+                type="text"
+                name="telegram"
+                placeholder="@username"
+                required
+                class="h-9 w-full rounded-md border border-slate-200 bg-white px-2.5 text-[13px] text-slate-800 outline-none transition-colors placeholder:text-slate-400 focus:border-slate-400"
+              />
+            </label>
+
+            <label class="flex flex-col gap-0.5">
+              <span class="text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-500">Message</span>
+              <textarea
+                name="message"
+                placeholder="Message"
+                rows="2"
+                class="w-full resize-none rounded-md border border-slate-200 bg-white px-2.5 py-1.5 text-[13px] text-slate-800 outline-none transition-colors placeholder:text-slate-400 focus:border-slate-400"
+              ></textarea>
+            </label>
+
+            <button
+              type="submit"
+              class="h-11 w-full rounded-md border border-blue-700 bg-blue-700 px-4 text-[12px] font-semibold tracking-[0.08em] text-white"
+            >
+              JOIN TELEGRAM
+            </button>
+          </form>
         </div>
       </section>
 
-      <section id="trust-support" class="bg-slate-50 py-8 sm:py-12 lg:py-14">
+      <section id="trust-support" class="bg-gradient-to-b from-slate-50 via-slate-50 to-white py-6 sm:py-7 lg:py-8">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div class="grid gap-6 lg:grid-cols-2">
-            <div class="rounded-lg border border-slate-200 bg-white p-4 sm:p-5">
+          <div class="grid gap-4 sm:gap-5 lg:grid-cols-2">
+            <div class="mx-auto w-full max-w-3xl rounded-xl border border-slate-200/90 bg-white/95 p-3.5 shadow-[0_8px_24px_rgba(15,23,42,0.06)] sm:p-4">
               <p class="text-xs font-semibold uppercase tracking-[0.12em] text-slate-500">Trust &amp; Support</p>
               <h2 class="mt-2 text-xl font-semibold text-slate-900">Frequently Asked Questions</h2>
               <p class="mt-1 text-xs text-slate-500">Quick answers for payout timing, limits, account safety, and verification rules.</p>
 
-              <div id="faq-list" class="mt-4 space-y-2">
-                <details class="faq-item group rounded-md border border-slate-200 bg-white" open>
-                  <summary id="faq-q-1" aria-controls="faq-a-1" aria-expanded="true" class="flex min-h-[44px] cursor-pointer list-none items-center justify-between gap-3 px-3 py-2 text-left text-sm font-semibold text-slate-900 [&::-webkit-details-marker]:hidden">
-                    <span>How is the compensation calculated?</span>
-                    <span class="relative inline-flex h-5 w-5 items-center justify-center rounded border border-slate-300 text-slate-500">
-                      <span class="absolute h-0.5 w-2.5 bg-current"></span>
-                      <span class="absolute h-2.5 w-0.5 bg-current transition-opacity duration-200 group-open:opacity-0"></span>
-                    </span>
-                  </summary>
-                  <p id="faq-a-1" role="region" aria-labelledby="faq-q-1" class="px-3 pb-3 text-xs leading-5 text-slate-600">
-                    Compensation is based on campaign complexity, accuracy score, and your recent completion consistency.
-                  </p>
-                </details>
+              <div id="faq-list" class="mt-3 space-y-2"></div>
 
-                <details class="faq-item group rounded-md border border-slate-200 bg-white">
-                  <summary id="faq-q-2" aria-controls="faq-a-2" aria-expanded="false" class="flex min-h-[44px] cursor-pointer list-none items-center justify-between gap-3 px-3 py-2 text-left text-sm font-semibold text-slate-900 [&::-webkit-details-marker]:hidden">
-                    <span>When do I receive my payout?</span>
-                    <span class="relative inline-flex h-5 w-5 items-center justify-center rounded border border-slate-300 text-slate-500">
-                      <span class="absolute h-0.5 w-2.5 bg-current"></span>
-                      <span class="absolute h-2.5 w-0.5 bg-current transition-opacity duration-200 group-open:opacity-0"></span>
-                    </span>
-                  </summary>
-                  <p id="faq-a-2" role="region" aria-labelledby="faq-q-2" class="px-3 pb-3 text-xs leading-5 text-slate-600">
-                    Most settlements are released instantly after validation checks pass.
-                  </p>
-                </details>
-
-                <details class="faq-item group rounded-md border border-slate-200 bg-white">
-                  <summary id="faq-q-3" aria-controls="faq-a-3" aria-expanded="false" class="flex min-h-[44px] cursor-pointer list-none items-center justify-between gap-3 px-3 py-2 text-left text-sm font-semibold text-slate-900 [&::-webkit-details-marker]:hidden">
-                    <span>Is there a limit to daily tasks?</span>
-                    <span class="relative inline-flex h-5 w-5 items-center justify-center rounded border border-slate-300 text-slate-500">
-                      <span class="absolute h-0.5 w-2.5 bg-current"></span>
-                      <span class="absolute h-2.5 w-0.5 bg-current transition-opacity duration-200 group-open:opacity-0"></span>
-                    </span>
-                  </summary>
-                  <p id="faq-a-3" role="region" aria-labelledby="faq-q-3" class="px-3 pb-3 text-xs leading-5 text-slate-600">
-                    Yes. Limits vary by region and account tier and grow with stable high-quality output.
-                  </p>
-                </details>
-
-                <details class="faq-item group rounded-md border border-slate-200 bg-white">
-                  <summary id="faq-q-4" aria-controls="faq-a-4" aria-expanded="false" class="flex min-h-[44px] cursor-pointer list-none items-center justify-between gap-3 px-3 py-2 text-left text-sm font-semibold text-slate-900 [&::-webkit-details-marker]:hidden">
-                    <span>Which payout methods are supported?</span>
-                    <span class="relative inline-flex h-5 w-5 items-center justify-center rounded border border-slate-300 text-slate-500">
-                      <span class="absolute h-0.5 w-2.5 bg-current"></span>
-                      <span class="absolute h-2.5 w-0.5 bg-current transition-opacity duration-200 group-open:opacity-0"></span>
-                    </span>
-                  </summary>
-                  <p id="faq-a-4" role="region" aria-labelledby="faq-q-4" class="px-3 pb-3 text-xs leading-5 text-slate-600">
-                    We currently support PayPal and USDT in most available operating markets.
-                  </p>
-                </details>
-
-                <details class="faq-item group rounded-md border border-slate-200 bg-white">
-                  <summary id="faq-q-5" aria-controls="faq-a-5" aria-expanded="false" class="flex min-h-[44px] cursor-pointer list-none items-center justify-between gap-3 px-3 py-2 text-left text-sm font-semibold text-slate-900 [&::-webkit-details-marker]:hidden">
-                    <span>What happens if a task is marked invalid?</span>
-                    <span class="relative inline-flex h-5 w-5 items-center justify-center rounded border border-slate-300 text-slate-500">
-                      <span class="absolute h-0.5 w-2.5 bg-current"></span>
-                      <span class="absolute h-2.5 w-0.5 bg-current transition-opacity duration-200 group-open:opacity-0"></span>
-                    </span>
-                  </summary>
-                  <p id="faq-a-5" role="region" aria-labelledby="faq-q-5" class="px-3 pb-3 text-xs leading-5 text-slate-600">
-                    You receive reason codes instantly and can continue with the next eligible task without delays.
-                  </p>
-                </details>
-              </div>
-
-              <div class="mt-3 rounded-md border border-slate-200 bg-white px-3 py-2.5 shadow-sm">
+              <div class="mt-2 rounded-lg border border-slate-200 bg-white px-3.5 py-2.5 shadow-[0_6px_18px_rgba(15,23,42,0.05)]">
                 <div class="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-500">
                   <span class="inline-block h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
                   Live Activity
                 </div>
-                <p id="activity-line" class="mt-1 text-sm font-medium text-slate-700 transition-all duration-300">
-                  User US-AX29 just completed NIKE task - $2.50 earned (14s ago)
+                <p id="activity-line" aria-live="polite" class="mt-1 text-sm font-medium text-slate-700 transition-all duration-300">
+                  User US-AX29 just completed NIKE traffic stream - $2.50 earned (14s ago)
                 </p>
               </div>
-              <p class="mt-3 text-[11px] text-slate-500">Need account-specific help? Use Help Center for a priority review ticket.</p>
+              <p class="mt-2 text-[11px] text-slate-500">Need account-specific help? Use Help Center for a priority review ticket.</p>
             </div>
 
-            <div class="rounded-lg border border-slate-200 bg-white p-4 sm:p-5">
+            <div class="rounded-lg border border-slate-200 bg-white p-2.5 sm:p-3.5">
               <p class="text-xs font-semibold uppercase tracking-[0.12em] text-slate-500">Verified User Feedback</p>
               <h3 class="mt-2 text-xl font-semibold text-slate-900">Latest Reviews</h3>
               <p class="mt-1 text-xs text-slate-500">Recent settlement feedback from active users across multiple regions.</p>
 
-              <div class="mt-4 space-y-2.5">
-                <article class="rounded-md border border-slate-200 bg-white p-3">
-                  <div class="flex items-start justify-between gap-2">
-                    <div>
-                      <p class="text-sm font-semibold text-slate-900">A. Lewis <span class="align-middle">🇺🇸</span></p>
-                      <p class="text-[11px] text-slate-500">US-AX29 · 2026-04-21</p>
-                    </div>
-                    <span class="rounded-full bg-slate-100 px-2 py-0.5 text-[10px] font-medium text-slate-600">Verified</span>
-                  </div>
-                  <p class="mt-2 text-xs leading-5 text-slate-600">“Third payout this week. Verification flow is straightforward.”</p>
-                </article>
+              <div id="reviews-list" class="mt-3 space-y-2"></div>
+            </div>
+          </div>
 
-                <article class="rounded-md border border-slate-200 bg-white p-3">
-                  <div class="flex items-start justify-between gap-2">
-                    <div>
-                      <p class="text-sm font-semibold text-slate-900">N. Patel <span class="align-middle">🇬🇧</span></p>
-                      <p class="text-[11px] text-slate-500">UK-HM84 · 2026-04-19</p>
-                    </div>
-                    <span class="rounded-full bg-slate-100 px-2 py-0.5 text-[10px] font-medium text-slate-600">Verified</span>
-                  </div>
-                  <p class="mt-2 text-xs leading-5 text-slate-600">“Queue is stable, and payout confirmation appears right after completion.”</p>
-                </article>
-
-                <article class="rounded-md border border-slate-200 bg-white p-3">
-                  <div class="flex items-start justify-between gap-2">
-                    <div>
-                      <p class="text-sm font-semibold text-slate-900">T. Mokoena <span class="align-middle">🇿🇦</span></p>
-                      <p class="text-[11px] text-slate-500">ZA-ZR13 · 2026-04-18</p>
-                    </div>
-                    <span class="rounded-full bg-slate-100 px-2 py-0.5 text-[10px] font-medium text-slate-600">Verified</span>
-                  </div>
-                  <p class="mt-2 text-xs leading-5 text-slate-600">“Interface feels clean and support replies quickly for region-limit questions.”</p>
-                </article>
-
-                <article class="rounded-md border border-slate-200 bg-white p-3">
-                  <div class="flex items-start justify-between gap-2">
-                    <div>
-                      <p class="text-sm font-semibold text-slate-900">M. Garcia <span class="align-middle">🇪🇸</span></p>
-                      <p class="text-[11px] text-slate-500">ES-MG44 · 2026-04-17</p>
-                    </div>
-                    <span class="rounded-full bg-slate-100 px-2 py-0.5 text-[10px] font-medium text-slate-600">Verified</span>
-                  </div>
-                  <p class="mt-2 text-xs leading-5 text-slate-600">“Received two settlements today. Status updates are fast and predictable.”</p>
-                </article>
+          <section class="mt-5 overflow-hidden rounded-xl border border-slate-200 bg-white p-2.5 shadow-[0_8px_24px_rgba(15,23,42,0.05)] sm:mt-6 sm:p-3.5">
+            <div class="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+              <div>
+                <p class="text-xs font-semibold uppercase tracking-[0.12em] text-slate-500">Trusted by Global Media Agencies</p>
+                <h4 class="mt-1 text-base font-semibold text-slate-900 sm:text-lg">Enterprise Brand Network</h4>
+                <p class="mt-1 text-xs text-slate-500">Verified agency demand mapped by region, safety tier, and payout continuity.</p>
               </div>
             </div>
-          </div>
 
-          <div class="mt-8 rounded-lg border border-slate-200 bg-white p-4">
-            <p class="text-xs font-semibold uppercase tracking-[0.12em] text-slate-500">Trusted by Global Media Agencies</p>
-            <div class="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-5">
-              <div class="rounded-md border border-slate-200 bg-slate-50 px-3 py-2 text-center text-sm font-semibold tracking-wide text-slate-500">NIKE</div>
-              <div class="rounded-md border border-slate-200 bg-slate-50 px-3 py-2 text-center text-sm font-semibold tracking-wide text-slate-500">COCA-COLA</div>
-              <div class="rounded-md border border-slate-200 bg-slate-50 px-3 py-2 text-center text-sm font-semibold tracking-wide text-slate-500">AMAZON</div>
-              <div class="rounded-md border border-slate-200 bg-slate-50 px-3 py-2 text-center text-sm font-semibold tracking-wide text-slate-500">SAMSUNG</div>
-              <div class="rounded-md border border-slate-200 bg-slate-50 px-3 py-2 text-center text-sm font-semibold tracking-wide text-slate-500">TOYOTA</div>
+            <div class="mt-3 grid grid-cols-2 gap-2 text-[11px] sm:grid-cols-3">
+              <div class="rounded-md border border-slate-200 bg-slate-50 px-2.5 py-2 text-slate-600">
+                <p class="font-semibold text-slate-800">42+ countries</p>
+                <p class="mt-0.5 text-[10px] text-slate-500">Coverage footprint</p>
+              </div>
+              <div class="rounded-md border border-slate-200 bg-slate-50 px-2.5 py-2 text-slate-600">
+                <p class="font-semibold text-slate-800">Tier-1 verified</p>
+                <p class="mt-0.5 text-[10px] text-slate-500">Compliance validated</p>
+              </div>
+              <div class="rounded-md border border-slate-200 bg-slate-50 px-2.5 py-2 text-slate-600 col-span-2 sm:col-span-1">
+                <p class="font-semibold text-slate-800">99.98% SLA</p>
+                <p class="mt-0.5 text-[10px] text-slate-500">Payout stability</p>
+              </div>
             </div>
-          </div>
+
+          </section>
         </div>
       </section>
     </main>
 
     <footer class="border-t border-slate-200 bg-white">
-        <div class="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-10 lg:px-8">
+        <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 sm:py-8 lg:px-8">
         <div class="grid gap-8 lg:grid-cols-12">
           <section class="lg:col-span-4">
             <div class="inline-flex items-center gap-2 rounded-md border border-slate-200 bg-slate-50 px-2.5 py-1.5">
@@ -622,10 +649,10 @@
             </p>
           </section>
 
-          <nav class="grid grid-cols-2 gap-6 sm:grid-cols-3 lg:col-span-5" aria-label="Footer links">
+          <nav class="grid grid-cols-3 gap-2 sm:gap-6 lg:col-span-5" aria-label="Footer links">
             <div>
               <p class="text-[11px] font-semibold uppercase tracking-[0.12em] text-slate-500">Resources</p>
-              <ul class="mt-2.5 space-y-1.5 text-sm text-slate-600">
+              <ul class="mt-2.5 space-y-1 text-xs text-slate-600 sm:space-y-1.5 sm:text-sm">
                 <li><a href="#" class="hover:text-slate-900">System Status</a></li>
                 <li><a href="#" class="hover:text-slate-900">Node Map</a></li>
                 <li><a href="#" class="hover:text-slate-900">Help Center</a></li>
@@ -634,7 +661,7 @@
 
             <div>
               <p class="text-[11px] font-semibold uppercase tracking-[0.12em] text-slate-500">Legal</p>
-              <ul class="mt-2.5 space-y-1.5 text-sm text-slate-600">
+              <ul class="mt-2.5 space-y-1 text-xs text-slate-600 sm:space-y-1.5 sm:text-sm">
                 <li><a href="#" class="hover:text-slate-900">Terms of Service</a></li>
                 <li><a href="#" class="hover:text-slate-900">Privacy Policy</a></li>
                 <li><a href="#" class="hover:text-slate-900">Cookie Policy</a></li>
@@ -643,7 +670,7 @@
 
             <div>
               <p class="text-[11px] font-semibold uppercase tracking-[0.12em] text-slate-500">Company</p>
-              <ul class="mt-2.5 space-y-1.5 text-sm text-slate-600">
+              <ul class="mt-2.5 space-y-1 text-xs text-slate-600 sm:space-y-1.5 sm:text-sm">
                 <li><a href="#" class="hover:text-slate-900">About</a></li>
                 <li><a href="#" class="hover:text-slate-900">Compliance</a></li>
                 <li><a href="#" class="hover:text-slate-900">Contact</a></li>
@@ -663,13 +690,6 @@
               </div>
               <div class="flex items-center gap-2 rounded-md border border-slate-200 bg-slate-50 px-2.5 py-2 text-xs text-slate-600 grayscale">
                 <svg class="h-4 w-4" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                  <rect x="2" y="7" width="12" height="7" rx="1.5" stroke="currentColor" stroke-width="1.2" />
-                  <path d="M5 7V5.8a3 3 0 0 1 6 0V7" stroke="currentColor" stroke-width="1.2" />
-                </svg>
-                256-bit Encryption
-              </div>
-              <div class="flex items-center gap-2 rounded-md border border-slate-200 bg-slate-50 px-2.5 py-2 text-xs text-slate-600 grayscale">
-                <svg class="h-4 w-4" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                   <circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.2" />
                   <path d="M5 8.2 7 10.2l4-4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
@@ -679,129 +699,527 @@
           </aside>
         </div>
 
-        <div class="mt-8 border-t border-slate-200 pt-4 text-[11px] text-slate-500">
+        <div class="mt-6 border-t border-slate-200 pt-4 text-[11px] text-slate-500">
           © 2026 Global Cash Ads. Regulated by Digital Media Standards. Server Location: Frankfurt, DE.
         </div>
       </div>
     </footer>
 
-    <div class="fixed inset-x-0 bottom-0 z-40 border-t border-slate-700 bg-[#0F172A] p-3 pb-[calc(0.75rem+env(safe-area-inset-bottom))] md:hidden">
+    <div class="fixed inset-x-0 bottom-0 z-40 border-t border-slate-200/60 bg-white/95 p-3 pb-[calc(0.75rem+env(safe-area-inset-bottom))] backdrop-blur supports-[backdrop-filter]:bg-white/80 md:hidden">
       <button
         type="button"
-        class="flex w-full min-h-[44px] items-center justify-center rounded-md bg-white px-4 py-2.5 text-sm font-semibold text-[#0F172A] shadow-sm"
+        class="cta-breath flex w-full min-h-[48px] items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-blue-600 via-blue-500 to-cyan-500 px-4 py-3 text-[12px] font-semibold leading-tight text-white shadow-lg shadow-blue-500/30 transition-transform duration-200 active:scale-[0.98] sm:text-sm"
       >
-        Start Verified Task
+        <span class="inline-block h-2 w-2 rounded-full bg-white/90"></span>
+        ACTIVATE MY EARNING NODE
       </button>
+    </div>
+
+    <div
+      id="ledger-success-modal"
+      class="fixed inset-0 z-[70] hidden items-center justify-center bg-slate-900/70 p-4"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="ledger-success-title"
+    >
+      <div class="w-full max-w-sm rounded-md border border-slate-200 bg-white p-5 text-center">
+        <h3 id="ledger-success-title" class="text-base font-semibold text-slate-900">Request Received</h3>
+        <p class="mt-2 text-sm text-slate-600">Your details have been submitted. Continue via Telegram to finalize activation.</p>
+        <a
+          href="https://t.me/globalads_support"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="mt-4 inline-flex w-full items-center justify-center rounded-md border border-slate-900 bg-slate-900 px-4 py-2.5 text-xs font-semibold tracking-[0.08em] text-white"
+        >
+          OPEN TELEGRAM
+        </a>
+        <button
+          id="ledger-modal-close"
+          type="button"
+          class="mt-2 inline-flex w-full items-center justify-center rounded-md border border-slate-200 bg-white px-4 py-2.5 text-xs font-medium text-slate-700"
+        >
+          CLOSE
+        </button>
+      </div>
     </div>
 
     <script>
       (function () {
-        const el = document.getElementById('system-time');
-        const footerTimeEl = document.getElementById('footer-server-time');
-        const serverLoadEl = document.getElementById('server-load');
-        const totalPayoutsEl = document.getElementById('total-payouts');
-        const activityLineEl = document.getElementById('activity-line');
-        const faqListEl = document.getElementById('faq-list');
-        const makeTxnId = () => `#TXN-${Math.floor(Math.random() * 9000) + 1000}`;
-        let serverLoad = 34;
-        let totalPayouts = 1240491;
-        const activityFeed = [
-          { user: 'US-AX29', brand: 'NIKE', amount: 2.5, ago: 14 },
-          { user: 'UK-HM84', brand: 'APPLE', amount: 3.1, ago: 22 },
-          { user: 'DE-RM31', brand: 'GOOGLE', amount: 2.9, ago: 9 },
-          { user: 'AU-NK52', brand: 'STARBUCKS', amount: 3.8, ago: 31 },
-        ];
-        let activityIndex = 0;
+        'use strict';
 
-        const formatNumber = (value) => value.toLocaleString('en-US');
-
-        document.querySelectorAll('.txn-id').forEach((node) => {
-          node.textContent = makeTxnId();
-        });
-
-        const update = () => {
-          const now = new Date();
-          const utcTime = `${now.toISOString().slice(11, 19)} UTC`;
-          el.textContent = utcTime;
-          if (footerTimeEl) footerTimeEl.textContent = utcTime;
+        const elements = {
+          systemTime: document.getElementById('system-time'),
+          serverLoad: document.getElementById('server-load'),
+          totalPayouts: document.getElementById('total-payouts'),
+          localNodeSpots: document.getElementById('local-node-spots'),
+          rewardBaitTag: document.getElementById('reward-bait-tag'),
+          nodeResetTimer: document.getElementById('node-reset-timer'),
+          ledgerBody: document.getElementById('ledger-body'),
+          faqList: document.getElementById('faq-list'),
+          activityLine: document.getElementById('activity-line'),
+          reviewsList: document.getElementById('reviews-list'),
+          campaignCardsGrid: document.getElementById('campaign-cards-grid'),
+          heroTaskSlots: document.getElementById('hero-task-slots'),
+          heroTaskCountdown: document.getElementById('hero-task-countdown'),
+          detectedNode: document.getElementById('detected-node'),
+          ledgerJoinForm: document.getElementById('ledger-join-form'),
+          ledgerSuccessModal: document.getElementById('ledger-success-modal'),
+          ledgerModalClose: document.getElementById('ledger-modal-close'),
+          ledgerSubmitButton: document.querySelector('#ledger-join-form button[type="submit"]'),
+          ledgerSuccessTitle: document.getElementById('ledger-success-title'),
+          ledgerSuccessBody: document.querySelector('#ledger-success-modal p'),
+          ledgerSuccessCta: document.querySelector('#ledger-success-modal a[href]'),
         };
 
-        const updateMetrics = () => {
-          serverLoad = Math.min(45, Math.max(28, serverLoad + Math.floor(Math.random() * 5) - 2));
-          totalPayouts = Math.max(1239000, totalPayouts + Math.floor(Math.random() * 381) - 140);
-          serverLoadEl.textContent = `Server Load: ${serverLoad}%`;
-          totalPayoutsEl.textContent = `Total Payouts: $${formatNumber(totalPayouts)}`;
+        if (!elements.systemTime) return;
+
+        const numberFormatter = new Intl.NumberFormat('en-US');
+        const randomInt = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
+        const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
+        const formatCurrency = (amount) => `$${amount.toFixed(2)} USD`;
+        const makeTxnId = () => `#TXN-${randomInt(1000, 9999)}`;
+        const RESET_TIMER_DEFAULT_SECONDS = 4 * 60 + 52;
+        const FORM_SUBMIT_STEP_DELAY_MS = 800;
+        const FORM_SUBMIT_STEPS = ['Requesting Node...', 'Allocating Global ID...', 'Syncing Protocol...'];
+        const SUCCESS_MODAL_COPY = Object.freeze({
+          title: 'Node Allocated Successfully!',
+          body: 'Your unique validator node #US-7721 is now reserved for the next 5 minutes. To activate your secure stream and receive your $10.00 entry incentive, please finalize your registration in our Telegram Secure Channel.',
+          cta: 'Go to Telegram to Activate Now',
+        });
+        const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+        const bankPayoutMethods = {
+          US: { label: 'Chase Bank (ACH)' },
+          UK: { label: 'Barclays (FPS)' },
+          ZA: { label: 'Standard Bank (EFT)' },
+          AU: { label: 'Commonwealth Bank (NPP)' },
+          CA: { label: 'RBC (Interac e-Transfer)' },
+          DE: { label: 'Deutsche Bank (SEPA)' },
+          DEFAULT: { label: 'Local Bank Transfer' },
+        };
+
+        const bankTransferIcon =
+          '<svg class="h-4 w-4" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 2 2 4.8v1.4h12V4.8L8 2Z" fill="#2563EB" /><rect x="3" y="7" width="1.6" height="4.5" rx="0.6" fill="#1D4ED8" /><rect x="5.8" y="7" width="1.6" height="4.5" rx="0.6" fill="#1D4ED8" /><rect x="8.6" y="7" width="1.6" height="4.5" rx="0.6" fill="#1D4ED8" /><rect x="11.4" y="7" width="1.6" height="4.5" rx="0.6" fill="#1D4ED8" /><rect x="2" y="12.2" width="12" height="1.4" rx="0.7" fill="#2563EB" /></svg>';
+
+        const ledgerEntriesSeed = [
+          { flag: '🇺🇸', country: 'US', user: 'node_892', amount: 12.5 },
+          { flag: '🇬🇧', country: 'UK', user: 'val_4412', amount: 9.3 },
+          { flag: '🇿🇦', country: 'ZA', user: 'node_317', amount: 6.8 },
+          { flag: '🇺🇸', country: 'US', user: 'val_2901', amount: 14.7 },
+          { flag: '🇦🇺', country: 'AU', user: 'node_774', amount: 8.9 },
+          { flag: '🇨🇦', country: 'CA', user: 'val_6305', amount: 16.2 },
+          { flag: '🇩🇪', country: 'DE', user: 'node_558', amount: 10.4 },
+        ];
+
+        const faqEntries = [
+          {
+            q: 'How are Node Incentives calculated?',
+            a: 'Node Incentives are based on campaign complexity, accuracy score, and your recent Stream Syncing consistency.',
+          },
+          {
+            q: 'When do I receive my Node Incentives?',
+            a: 'Most Node Incentives settlements are released instantly after validation checks pass.',
+          },
+          {
+            q: 'Is there a limit to daily traffic streams?',
+            a: 'Yes. Limits vary by region and account tier and grow with stable high-quality output.',
+          },
+          {
+            q: 'Which Node Incentives settlement methods are supported?',
+            a: 'We currently support local bank transfer rails for Node Incentives based on your country (e.g., ACH, FPS, EFT, SEPA).',
+          },
+          {
+            q: 'What happens if a traffic stream is marked invalid?',
+            a: 'You receive reason codes instantly and can continue with the next eligible traffic stream without delays.',
+          },
+        ];
+
+        const reviews = [
+          {
+            name: 'A. Lewis',
+            flag: '🇺🇸',
+            meta: 'US-AX29 · 2026-04-21',
+            text: '“Third Node Incentives settlement this week. Verification flow is straightforward.”',
+          },
+          {
+            name: 'N. Patel',
+            flag: '🇬🇧',
+            meta: 'UK-HM84 · 2026-04-19',
+            text: '“Queue is stable, and Node Incentives confirmation appears right after completion.”',
+          },
+          {
+            name: 'T. Mokoena',
+            flag: '🇿🇦',
+            meta: 'ZA-ZR13 · 2026-04-18',
+            text: '“Interface feels clean and support replies quickly for region-limit questions.”',
+          },
+          {
+            name: 'M. Garcia',
+            flag: '🇪🇸',
+            meta: 'ES-MG44 · 2026-04-17',
+            text: '“Received two settlements today. Status updates are fast and predictable.”',
+          },
+        ];
+
+        const campaignCardConfigs = [
+          {
+            code: 'N',
+            tag: 'Live',
+            regionLabel: 'US / EU',
+            maxSlots: 38,
+            title: 'NIKE · Performance Clip',
+            subtitle: 'Avg payout: $2.50 · Avg duration: 54s',
+            imageSrc: 'https://images.unsplash.com/photo-1517940310602-26535839fe84?auto=format&fit=crop&w=800&q=80',
+            imageAlt: 'Nike campaign visual',
+          },
+          {
+            code: 'A',
+            tag: 'Priority',
+            regionLabel: 'UK / CA',
+            maxSlots: 29,
+            title: 'APPLE · Product Story',
+            subtitle: 'Avg payout: $3.10 · Avg duration: 63s',
+            imageSrc: 'https://images.unsplash.com/photo-1512499617640-c74ae3a79d37?auto=format&fit=crop&w=800&q=80',
+            imageAlt: 'Apple device campaign visual',
+          },
+          {
+            code: 'S',
+            tag: 'Fast Fill',
+            regionLabel: 'APAC',
+            maxSlots: 17,
+            title: 'STARBUCKS · Brand Recall',
+            subtitle: 'Avg payout: $2.80 · Avg duration: 58s',
+            imageSrc: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=800&q=80',
+            imageAlt: 'Starbucks campaign visual',
+          },
+          {
+            code: 'G',
+            tag: 'High Demand',
+            regionLabel: 'Global',
+            maxSlots: 42,
+            title: 'GOOGLE · Search Intent',
+            subtitle: 'Avg payout: $3.40 · Avg duration: 49s',
+            imageSrc: 'https://images.unsplash.com/photo-1573804633927-bfcbcd909acd?auto=format&fit=crop&w=800&q=80',
+            imageAlt: 'Google campaign visual',
+          },
+        ];
+
+        const TASK_CARD_RULES = Object.freeze({
+          startMin: 75,
+          startMax: 85,
+          incrementMinDelay: 3000,
+          incrementMaxDelay: 7000,
+          incrementMinValue: 1,
+          incrementMaxValue: 2,
+          holdAt: 99,
+          holdDuration: 30000,
+          resetTo: 80,
+        });
+
+        const state = {
+          serverLoad: 34,
+          totalPayouts: 1240491,
+          localNodeIndex: 0,
+          localNodeSpots: 3,
+          localNodeRegions: ['Singapore', 'London', 'New York', 'Sydney', 'Johannesburg', 'Toronto', 'Frankfurt'],
+          rewardBaitIndex: 0,
+          rewardBaitLabels: ['2x BONUS', 'NEWBIE ONLY'],
+          ledgerEntries: [...ledgerEntriesSeed],
+          ledgerJustUpdated: false,
+          nodeResetSeconds: RESET_TIMER_DEFAULT_SECONDS,
+          activityIndex: 0,
+          activityFeed: [
+            { user: 'node_892', action: 'Stream Validation', amount: 12.5, ago: 14 },
+            { user: 'val_4412', action: 'Ad-Traffic Sync', amount: 9.3, ago: 22 },
+            { user: 'node_558', action: 'Stream Validation', amount: 10.4, ago: 9 },
+            { user: 'val_6305', action: 'Ad-Traffic Sync', amount: 16.2, ago: 31 },
+          ],
+          heroTaskTotalSlots: 15,
+          heroTaskRemainingSlots: 14,
+          heroTaskCountdownSeconds: 11 * 60 + 42,
+          heroTaskTickCursor: 0,
+          detectedNodeLabel: 'Locating...',
+          taskCardControllers: [],
+        };
+
+        const detectedNodeFallbacks = ['London, UK', 'Singapore, SG', 'New York, US', 'Toronto, CA', 'Sydney, AU', 'Frankfurt, DE'];
+        const timezoneNodeMap = {
+          Asia: ['Singapore, SG', 'Tokyo, JP', 'Seoul, KR'],
+          Europe: ['London, UK', 'Frankfurt, DE', 'Paris, FR'],
+          America: ['New York, US', 'Toronto, CA', 'Chicago, US'],
+          Australia: ['Sydney, AU', 'Melbourne, AU'],
+          Africa: ['Johannesburg, ZA', 'Cape Town, ZA'],
+        };
+
+        const renderDetectedNode = () => {
+          if (!elements.detectedNode) return;
+          elements.detectedNode.textContent = `Detected Node: ${state.detectedNodeLabel}`;
+        };
+
+        const resolveDetectedNode = (location) => {
+          if (!location || !location.label) return;
+
+          state.detectedNodeLabel = location.label;
+          if (location.city) {
+            state.localNodeRegions[0] = location.city;
+            state.localNodeIndex = 0;
+            renderLocalNodePressure();
+          }
+
+          renderDetectedNode();
+        };
+
+        const detectNodeByTimezone = (timeZoneOverride = '') => {
+          const timeZone = timeZoneOverride || Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+          const primaryRegion = timeZone.split('/')[0];
+          const cityPool = timezoneNodeMap[primaryRegion] || detectedNodeFallbacks;
+          const resolvedLabel = cityPool[randomInt(0, cityPool.length - 1)];
+          const city = resolvedLabel.split(',')[0].trim();
+          resolveDetectedNode({ city, label: resolvedLabel });
+        };
+
+        const detectNodeByGeoThenTimezone = () => {
+          const fallbackByTimezone = () => detectNodeByTimezone();
+
+          if (!navigator.geolocation || typeof navigator.geolocation.getCurrentPosition !== 'function') {
+            fallbackByTimezone();
+            return;
+          }
+
+          let resolved = false;
+          const resolveFallback = () => {
+            if (resolved) return;
+            resolved = true;
+            fallbackByTimezone();
+          };
+
+          try {
+            navigator.geolocation.getCurrentPosition(
+              () => {
+                if (resolved) return;
+                resolved = true;
+                fallbackByTimezone();
+              },
+              () => {
+                resolveFallback();
+              },
+              { enableHighAccuracy: false, timeout: 1600, maximumAge: 300000 }
+            );
+            setTimeout(resolveFallback, 1900);
+          } catch (error) {
+            resolveFallback();
+          }
+        };
+
+        const formatCountdown = (seconds) => {
+          const minutes = String(Math.floor(seconds / 60)).padStart(2, '0');
+          const remainSeconds = String(seconds % 60).padStart(2, '0');
+          return `${minutes}:${remainSeconds}`;
+        };
+
+        const renderHeroTaskUrgency = () => {
+          if (elements.heroTaskSlots) {
+            elements.heroTaskSlots.textContent = `Slots: ${state.heroTaskRemainingSlots}/${state.heroTaskTotalSlots} left`;
+          }
+
+          if (elements.heroTaskCountdown) {
+            elements.heroTaskCountdown.textContent = `Closing in ${formatCountdown(state.heroTaskCountdownSeconds)}`;
+          }
+        };
+
+        const tickHeroTaskUrgency = () => {
+          if (state.heroTaskCountdownSeconds > 0) {
+            state.heroTaskCountdownSeconds -= 1;
+          } else {
+            state.heroTaskCountdownSeconds = randomInt(8 * 60, 13 * 60);
+            state.heroTaskRemainingSlots = randomInt(3, 7);
+          }
+
+          state.heroTaskTickCursor = (state.heroTaskTickCursor + 1) % 4;
+          if (state.heroTaskTickCursor === 0) {
+            if (state.heroTaskRemainingSlots <= 3) {
+              const scarcityJitter = [0, 0, 1, -1];
+              const nextSlots = state.heroTaskRemainingSlots + scarcityJitter[randomInt(0, scarcityJitter.length - 1)];
+              state.heroTaskRemainingSlots = clamp(nextSlots, 2, 4);
+              if (Math.random() < 0.3) {
+                state.heroTaskRemainingSlots = Math.max(2, state.heroTaskRemainingSlots - 1);
+              }
+            } else {
+              const drop = Math.random() < 0.66 ? 1 : 0;
+              const refill = Math.random() < 0.18 ? 1 : 0;
+              state.heroTaskRemainingSlots = clamp(
+                state.heroTaskRemainingSlots - drop + refill,
+                2,
+                state.heroTaskTotalSlots
+              );
+            }
+          }
+
+          renderHeroTaskUrgency();
         };
 
         const makeLedgerTime = (index) => {
-          if (index < 3) {
-            const sec = Math.floor(Math.random() * 45) + 12;
-            return `${sec}s ago`;
-          }
-          const min = index + 1 + Math.floor(Math.random() * 2);
-          const sec = Math.floor(Math.random() * 60);
-          return sec === 0 ? `${min}m ago` : `${min}m ${sec}s ago`;
+          if (index === 0) return 'just now';
+          if (index === 1) return '12s ago';
+          if (index === 2) return '28s ago';
+          const minute = index + 1 + randomInt(0, 1);
+          const second = randomInt(0, 59);
+          return second === 0 ? `${minute}m ago` : `${minute}m ${second}s ago`;
         };
 
-        document.querySelectorAll('.ledger-time').forEach((node, idx) => {
-          node.textContent = makeLedgerTime(idx);
-        });
+        const renderLedger = () => {
+          if (!elements.ledgerBody) return;
+          elements.ledgerBody.innerHTML = state.ledgerEntries
+            .map((entry, index) => {
+              const method = bankPayoutMethods[entry.country] || bankPayoutMethods.DEFAULT;
+              const rowTone = index % 2 === 0 ? 'bg-white' : 'bg-slate-50';
+              const motionClass = state.ledgerJustUpdated
+                ? index === 0
+                  ? 'ledger-row-enter'
+                  : 'ledger-row-shift'
+                : '';
+              return `
+                <tr class="border-b border-slate-200 ${rowTone} ${motionClass}">
+                  <td class="ledger-time px-4 py-1 text-slate-600">${makeLedgerTime(index)}</td>
+                  <td class="px-4 py-1 text-brand-ink">
+                    <span class="inline-flex items-center gap-2 leading-none font-medium">
+                      <span class="inline-flex h-5 w-5 shrink-0 items-center justify-center overflow-hidden rounded-full border border-slate-200 bg-white text-[11px] leading-none shadow-sm">${entry.flag}</span>
+                      <span class="font-medium">${entry.user}</span>
+                    </span>
+                  </td>
+                  <td class="px-4 py-1 text-slate-700">
+                    <span class="inline-flex items-center gap-2">
+                      ${bankTransferIcon}
+                      ${method.label}
+                    </span>
+                  </td>
+                  <td class="px-4 py-1">
+                    <div class="leading-tight">
+                      <span class="font-mono font-bold text-brand-ink">${formatCurrency(entry.amount)}</span>
+                      <p class="mt-0.5 text-[9px] font-extralight tracking-[0.06em] text-slate-300">${makeTxnId()}</p>
+                    </div>
+                  </td>
+                </tr>
+              `;
+            })
+            .join('');
 
-        const renderActivity = () => {
-          if (!activityLineEl) return;
-          const current = activityFeed[activityIndex];
-          activityLineEl.classList.add('opacity-0', 'translate-y-1');
+          state.ledgerJustUpdated = false;
+        };
+
+        const createLedgerEntry = () => {
+          const bankRegions = [
+            { country: 'US', flag: '🇺🇸' },
+            { country: 'UK', flag: '🇬🇧' },
+            { country: 'ZA', flag: '🇿🇦' },
+            { country: 'AU', flag: '🇦🇺' },
+            { country: 'CA', flag: '🇨🇦' },
+            { country: 'DE', flag: '🇩🇪' },
+          ];
+
+          const picked = bankRegions[randomInt(0, bankRegions.length - 1)];
+          const minAmount = 2.5;
+          const maxAmount = 18.5;
+          const userPrefix = Math.random() < 0.5 ? 'node' : 'val';
+          const userSuffix = randomInt(100, 9999);
+
+          return {
+            flag: picked.flag,
+            country: picked.country,
+            user: `${userPrefix}_${userSuffix}`,
+            amount: Number((minAmount + Math.random() * (maxAmount - minAmount)).toFixed(2)),
+          };
+        };
+
+        const pushLedgerEntry = () => {
+          state.ledgerEntries.unshift(createLedgerEntry());
+          state.ledgerEntries = state.ledgerEntries.slice(0, 7);
+          state.ledgerJustUpdated = true;
+          renderLedger();
+        };
+
+        const scheduleLedgerStream = () => {
+          const delay = randomInt(2000, 5000);
           setTimeout(() => {
-            activityLineEl.textContent = `User ${current.user} just completed ${current.brand} task - $${current.amount.toFixed(2)} earned (${current.ago}s ago)`;
-            activityLineEl.classList.remove('opacity-0', 'translate-y-1');
-          }, 140);
+            pushLedgerEntry();
+            scheduleLedgerStream();
+          }, delay);
         };
 
-        const tickActivityTime = () => {
-          activityFeed.forEach((item) => {
-            item.ago += 1;
-          });
-          renderActivity();
+        const renderFaq = () => {
+          if (!elements.faqList) return;
+          elements.faqList.innerHTML = faqEntries
+            .map((item, index) => {
+              const qId = `faq-q-${index + 1}`;
+              const aId = `faq-a-${index + 1}`;
+              const open = index === 0;
+              return `
+                <details class="faq-item group rounded-lg border border-slate-200 bg-white shadow-[0_2px_10px_rgba(15,23,42,0.04)]" ${open ? 'open' : ''}>
+                  <summary id="${qId}" aria-controls="${aId}" aria-expanded="${open}" class="flex min-h-[44px] cursor-pointer list-none items-center justify-between gap-3 px-4 py-2 text-left text-sm font-semibold text-slate-900 [&::-webkit-details-marker]:hidden">
+                    <span>${item.q}</span>
+                    <span class="relative inline-flex h-5 w-5 items-center justify-center rounded border border-slate-300 text-slate-500">
+                      <span class="absolute h-0.5 w-2.5 bg-current"></span>
+                      <span class="absolute h-2.5 w-0.5 bg-current transition-opacity duration-200 group-open:opacity-0"></span>
+                    </span>
+                  </summary>
+                  <p id="${aId}" role="region" aria-labelledby="${qId}" class="px-4 pb-3 text-[13px] leading-6 text-slate-600">
+                    ${item.a}
+                  </p>
+                </details>
+              `;
+            })
+            .join('');
         };
 
-        const rotateActivity = () => {
-          activityIndex = (activityIndex + 1) % activityFeed.length;
-          renderActivity();
+        const renderReviews = () => {
+          if (!elements.reviewsList) return;
+          elements.reviewsList.innerHTML = reviews
+            .map(
+              (review) => `
+                <article class="rounded-md border border-slate-200 bg-white p-3">
+                  <div class="flex items-start justify-between gap-2">
+                    <div>
+                      <p class="text-sm font-semibold text-slate-900">${review.name} <span class="align-middle">${review.flag}</span></p>
+                      <p class="text-[11px] text-slate-500">${review.meta}</p>
+                    </div>
+                    <span class="rounded-full bg-slate-100 px-2 py-0.5 text-[10px] font-medium text-slate-600">Verified</span>
+                  </div>
+                  <p class="mt-2 text-xs leading-5 text-slate-600">${review.text}</p>
+                </article>
+              `
+            )
+            .join('');
         };
 
         const setupFaqAccordion = () => {
-          if (!faqListEl) return;
-          const faqItems = Array.from(faqListEl.querySelectorAll('.faq-item'));
-          const summaries = faqItems
-            .map((item) => item.querySelector('summary'))
-            .filter(Boolean);
+          if (!elements.faqList) return;
+
+          const faqItems = Array.from(elements.faqList.querySelectorAll('.faq-item'));
+          const summaries = faqItems.map((item) => item.querySelector('summary')).filter(Boolean);
 
           const setFaqOpen = (item, open) => {
             item.open = open;
             const summary = item.querySelector('summary');
-            if (summary) summary.setAttribute('aria-expanded', String(open));
+            if (summary) {
+              summary.setAttribute('aria-expanded', String(open));
+            }
           };
 
-          let openedFound = false;
-          faqItems.forEach((item) => {
-            if (item.open && !openedFound) {
-              openedFound = true;
-              setFaqOpen(item, true);
-            } else {
-              setFaqOpen(item, false);
-            }
-          });
-          if (!openedFound && faqItems[0]) setFaqOpen(faqItems[0], true);
+          faqItems.forEach((item, index) => {
+            setFaqOpen(item, index === 0);
 
-          faqItems.forEach((item) => {
             item.addEventListener('toggle', () => {
               if (!item.open) {
                 setFaqOpen(item, false);
                 return;
               }
+
               faqItems.forEach((other) => {
-                if (other !== item) setFaqOpen(other, false);
+                if (other !== item) {
+                  setFaqOpen(other, false);
+                }
               });
+
               setFaqOpen(item, true);
             });
           });
@@ -820,14 +1238,392 @@
           });
         };
 
-        setupFaqAccordion();
-        update();
-        updateMetrics();
-        renderActivity();
-        setInterval(update, 1000);
-        setInterval(updateMetrics, 3500);
-        setInterval(tickActivityTime, 1000);
-        setInterval(rotateActivity, 2600);
+        const updateClock = () => {
+          const now = new Date();
+          elements.systemTime.textContent = `${now.toISOString().slice(11, 19)} UTC`;
+        };
+
+        const updateMetrics = () => {
+          if (!elements.serverLoad || !elements.totalPayouts) return;
+
+          state.serverLoad = clamp(state.serverLoad + randomInt(-2, 2), 28, 45);
+          state.totalPayouts = Math.max(1239000, state.totalPayouts + randomInt(-140, 240));
+
+          elements.serverLoad.textContent = `Server Load: ${state.serverLoad}%`;
+          elements.totalPayouts.textContent = `Total Payouts: $${numberFormatter.format(state.totalPayouts)}`;
+        };
+
+        const renderLocalNodePressure = () => {
+          if (!elements.localNodeSpots) return;
+          const region = state.localNodeRegions[state.localNodeIndex];
+          elements.localNodeSpots.textContent = `Local Node: ${region} - ${state.localNodeSpots} Spots Remaining`;
+        };
+
+        const rotateLocalNodePressure = () => {
+          state.localNodeIndex = (state.localNodeIndex + 1) % state.localNodeRegions.length;
+
+          if (state.localNodeSpots <= 3) {
+            const scarcityJitter = [0, 0, 1, -1];
+            const nextSpots = state.localNodeSpots + scarcityJitter[randomInt(0, scarcityJitter.length - 1)];
+            state.localNodeSpots = clamp(nextSpots, 2, 4);
+            if (Math.random() < 0.35) {
+              state.localNodeSpots = Math.max(2, state.localNodeSpots - 1);
+            }
+          } else {
+            state.localNodeSpots = clamp(state.localNodeSpots + randomInt(-1, 0), 2, 5);
+            if (Math.random() < 0.4) {
+              state.localNodeSpots = Math.max(2, state.localNodeSpots - 1);
+            }
+          }
+
+          renderLocalNodePressure();
+        };
+
+        const renderRewardBaitTag = () => {
+          if (!elements.rewardBaitTag) return;
+          elements.rewardBaitTag.textContent = state.rewardBaitLabels[state.rewardBaitIndex];
+        };
+
+        const rotateRewardBaitTag = () => {
+          state.rewardBaitIndex = (state.rewardBaitIndex + 1) % state.rewardBaitLabels.length;
+          renderRewardBaitTag();
+        };
+
+        const renderNodeResetTimer = () => {
+          if (!elements.nodeResetTimer) return;
+          const minutes = String(Math.floor(state.nodeResetSeconds / 60)).padStart(2, '0');
+          const seconds = String(state.nodeResetSeconds % 60).padStart(2, '0');
+          elements.nodeResetTimer.textContent = `${minutes}:${seconds}`;
+        };
+
+        const tickNodeResetTimer = () => {
+          if (state.nodeResetSeconds > 0) {
+            state.nodeResetSeconds -= 1;
+          } else {
+            state.nodeResetSeconds = RESET_TIMER_DEFAULT_SECONDS;
+          }
+          renderNodeResetTimer();
+        };
+
+        const renderActivity = () => {
+          if (!elements.activityLine) return;
+          const current = state.activityFeed[state.activityIndex];
+          elements.activityLine.classList.add('opacity-0', 'translate-y-1');
+
+          setTimeout(() => {
+            elements.activityLine.textContent = `User ${current.user} completed ${current.action} - ${formatCurrency(current.amount).replace(' USD', '')} Node Incentives (${current.ago}s ago)`;
+            elements.activityLine.classList.remove('opacity-0', 'translate-y-1');
+          }, 140);
+        };
+
+        const tickActivityTime = () => {
+          state.activityFeed.forEach((item) => {
+            item.ago += 1;
+          });
+          renderActivity();
+        };
+
+        const rotateActivity = () => {
+          state.activityIndex = (state.activityIndex + 1) % state.activityFeed.length;
+          renderActivity();
+        };
+
+        const getCampaignTagTone = (tag) => {
+          const toneMap = {
+            Live: 'bg-emerald-50 text-emerald-700',
+            Priority: 'bg-blue-50 text-blue-700',
+            'Fast Fill': 'bg-amber-50 text-amber-700',
+            'High Demand': 'bg-purple-50 text-purple-700',
+          };
+          return toneMap[tag] || 'bg-slate-100 text-slate-600';
+        };
+
+        const renderCampaignCards = () => {
+          if (!elements.campaignCardsGrid) return;
+
+          elements.campaignCardsGrid.innerHTML = campaignCardConfigs
+            .map(
+              (card) => `
+                <article
+                  class="partner-card group overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm"
+                  data-task-card
+                  data-region-label="${card.regionLabel}"
+                  data-task-max-slots="${card.maxSlots}"
+                >
+                  <div class="relative overflow-hidden">
+                    <img
+                      src="${card.imageSrc}"
+                      alt="${card.imageAlt}"
+                      class="campaign-image h-32 w-full object-cover"
+                      loading="lazy"
+                    />
+                    <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-900/70 to-transparent px-3 py-2 text-[10px] font-medium text-white">
+                      <span class="transition-all duration-500" data-task-slots-label>${card.regionLabel} · ${card.maxSlots} traffic streams left</span>
+                    </div>
+                  </div>
+                  <div class="p-3.5">
+                    <div class="flex items-center justify-between">
+                      <span class="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-slate-900 text-[11px] font-bold text-white">${card.code}</span>
+                      <span class="rounded-full px-2 py-0.5 text-[10px] font-semibold ${getCampaignTagTone(card.tag)}">${card.tag}</span>
+                    </div>
+                    <p class="mt-2 text-sm font-semibold text-slate-900">${card.title}</p>
+                    <p class="mt-1 text-xs text-slate-500">${card.subtitle}</p>
+                    <div
+                      class="mt-3 h-1.5 overflow-hidden rounded-full bg-slate-100"
+                      role="progressbar"
+                      aria-label="Campaign fill level"
+                      aria-valuemin="0"
+                      aria-valuemax="100"
+                      aria-valuenow="80"
+                      data-task-progress-track
+                    >
+                      <div
+                        data-task-progress-fill
+                        class="relative h-1.5 w-[80%] rounded-full transition-all duration-700 ease-out"
+                        style="background: linear-gradient(90deg, #38bdf8 0%, #3b82f6 60%, #22d3ee 100%);"
+                      >
+                        <span class="task-progress-tip" data-task-progress-tip style="background:#22d3ee; box-shadow:0 0 10px rgba(34, 211, 238, 0.8);"></span>
+                      </div>
+                    </div>
+                  </div>
+                </article>
+              `
+            )
+            .join('');
+        };
+
+        const getTaskCardVisualTone = (progress) => {
+          if (progress >= 96) {
+            return {
+              gradient: 'linear-gradient(90deg, #f97316 0%, #ef4444 60%, #dc2626 100%)',
+              tipColor: '#ef4444',
+              tipShadow: '0 0 12px rgba(239, 68, 68, 0.9)',
+            };
+          }
+
+          if (progress >= 90) {
+            return {
+              gradient: 'linear-gradient(90deg, #f59e0b 0%, #f97316 58%, #ef4444 100%)',
+              tipColor: '#fb923c',
+              tipShadow: '0 0 12px rgba(249, 115, 22, 0.9)',
+            };
+          }
+
+          return {
+            gradient: 'linear-gradient(90deg, #38bdf8 0%, #3b82f6 60%, #22d3ee 100%)',
+            tipColor: '#22d3ee',
+            tipShadow: '0 0 10px rgba(34, 211, 238, 0.8)',
+          };
+        };
+
+        const getSlotsLeftByProgress = (progress, maxSlots) => {
+          if (progress >= 99) return 1;
+          if (progress >= 95) return 2;
+          if (progress >= 90) return 3;
+          return clamp(Math.round((100 - progress) / 3), 4, maxSlots);
+        };
+
+        const renderTaskCardProgress = (controller) => {
+          const { track, fill, tip, slotsLabel, regionLabel, maxSlots } = controller;
+          const progress = clamp(Math.round(controller.progress), 0, 99);
+          controller.progress = progress;
+
+          if (track) {
+            track.setAttribute('aria-valuenow', String(progress));
+          }
+
+          if (fill) {
+            const tone = getTaskCardVisualTone(progress);
+            fill.style.width = `${progress}%`;
+            fill.style.background = tone.gradient;
+            if (tip) {
+              tip.style.background = tone.tipColor;
+              tip.style.boxShadow = tone.tipShadow;
+            }
+          }
+
+          if (slotsLabel) {
+            const slotsLeft = getSlotsLeftByProgress(progress, maxSlots);
+            const taskWord = slotsLeft === 1 ? 'traffic stream' : 'traffic streams';
+            slotsLabel.textContent = `${regionLabel} · ${slotsLeft} ${taskWord} left`;
+          }
+        };
+
+        const scheduleTaskCardIncrement = (controller) => {
+          const delayMs = randomInt(TASK_CARD_RULES.incrementMinDelay, TASK_CARD_RULES.incrementMaxDelay);
+
+          controller.incrementTimer = setTimeout(() => {
+            const increment = randomInt(TASK_CARD_RULES.incrementMinValue, TASK_CARD_RULES.incrementMaxValue);
+            controller.progress = Math.min(TASK_CARD_RULES.holdAt, controller.progress + increment);
+            renderTaskCardProgress(controller);
+
+            if (controller.progress >= TASK_CARD_RULES.holdAt) {
+              controller.progress = TASK_CARD_RULES.holdAt;
+              renderTaskCardProgress(controller);
+
+              controller.resetTimer = setTimeout(() => {
+                controller.progress = TASK_CARD_RULES.resetTo;
+                renderTaskCardProgress(controller);
+                scheduleTaskCardIncrement(controller);
+              }, TASK_CARD_RULES.holdDuration);
+              return;
+            }
+
+            scheduleTaskCardIncrement(controller);
+          }, delayMs);
+        };
+
+        const setupTaskCardProgressSimulation = () => {
+          const cards = Array.from(document.querySelectorAll('[data-task-card]'));
+          if (!cards.length) return;
+
+          state.taskCardControllers = cards
+            .map((card) => {
+              const track = card.querySelector('[data-task-progress-track]');
+              const fill = card.querySelector('[data-task-progress-fill]');
+              const tip = card.querySelector('[data-task-progress-tip]');
+              const slotsLabel = card.querySelector('[data-task-slots-label]');
+              const regionLabel = card.dataset.regionLabel || 'Global';
+              const maxSlots = clamp(Number.parseInt(card.dataset.taskMaxSlots, 10) || 12, 6, 60);
+
+              if (!track || !fill || !slotsLabel) return null;
+
+              return {
+                track,
+                fill,
+                tip,
+                slotsLabel,
+                regionLabel,
+                maxSlots,
+                progress: randomInt(TASK_CARD_RULES.startMin, TASK_CARD_RULES.startMax),
+                incrementTimer: null,
+                resetTimer: null,
+              };
+            })
+            .filter(Boolean);
+
+          state.taskCardControllers.forEach((controller) => {
+            renderTaskCardProgress(controller);
+            scheduleTaskCardIncrement(controller);
+          });
+        };
+
+        const setLedgerSuccessModalOpen = (open) => {
+          if (!elements.ledgerSuccessModal) return;
+
+          elements.ledgerSuccessModal.classList.toggle('hidden', !open);
+          elements.ledgerSuccessModal.classList.toggle('flex', open);
+          document.body.classList.toggle('overflow-hidden', open);
+        };
+
+        const applySuccessModalCopy = () => {
+          if (elements.ledgerSuccessTitle) {
+            elements.ledgerSuccessTitle.textContent = SUCCESS_MODAL_COPY.title;
+          }
+
+          if (elements.ledgerSuccessBody) {
+            elements.ledgerSuccessBody.textContent = SUCCESS_MODAL_COPY.body;
+          }
+
+          if (elements.ledgerSuccessCta) {
+            elements.ledgerSuccessCta.textContent = SUCCESS_MODAL_COPY.cta;
+          }
+        };
+
+        const setupLedgerJoinForm = () => {
+          if (!elements.ledgerJoinForm || !elements.ledgerSuccessModal || !elements.ledgerSubmitButton) return;
+
+          let submitLocked = false;
+          const defaultSubmitLabel = elements.ledgerSubmitButton.textContent.trim();
+
+          const setSubmitButtonState = (label, disabled) => {
+            elements.ledgerSubmitButton.textContent = label;
+            elements.ledgerSubmitButton.disabled = disabled;
+            elements.ledgerSubmitButton.classList.toggle('opacity-80', disabled);
+            elements.ledgerSubmitButton.classList.toggle('cursor-not-allowed', disabled);
+          };
+
+          elements.ledgerJoinForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            if (submitLocked) return;
+            submitLocked = true;
+
+            setSubmitButtonState(FORM_SUBMIT_STEPS[0], true);
+
+            for (let stepIndex = 0; stepIndex < FORM_SUBMIT_STEPS.length; stepIndex += 1) {
+              setSubmitButtonState(FORM_SUBMIT_STEPS[stepIndex], true);
+              await wait(FORM_SUBMIT_STEP_DELAY_MS);
+            }
+
+            elements.ledgerJoinForm.reset();
+            setLedgerSuccessModalOpen(true);
+            setSubmitButtonState(defaultSubmitLabel, false);
+            submitLocked = false;
+          });
+
+          if (elements.ledgerSuccessCta) {
+            elements.ledgerSuccessCta.addEventListener('click', (event) => {
+              event.preventDefault();
+              const telegramUrl = elements.ledgerSuccessCta.href;
+              const popup = window.open(telegramUrl, '_blank', 'noopener,noreferrer');
+              if (!popup) {
+                window.location.href = telegramUrl;
+              }
+            });
+          }
+
+          if (elements.ledgerModalClose) {
+            elements.ledgerModalClose.addEventListener('click', () => {
+              setLedgerSuccessModalOpen(false);
+            });
+          }
+
+          elements.ledgerSuccessModal.addEventListener('click', (event) => {
+            if (event.target === elements.ledgerSuccessModal) {
+              setLedgerSuccessModalOpen(false);
+            }
+          });
+
+          document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') {
+              setLedgerSuccessModalOpen(false);
+            }
+          });
+        };
+
+        const init = () => {
+          renderLedger();
+          renderFaq();
+          renderReviews();
+          setupFaqAccordion();
+          renderCampaignCards();
+          setupTaskCardProgressSimulation();
+
+          updateClock();
+          updateMetrics();
+          renderLocalNodePressure();
+          renderDetectedNode();
+          renderRewardBaitTag();
+          renderNodeResetTimer();
+          renderHeroTaskUrgency();
+          renderActivity();
+          applySuccessModalCopy();
+          setupLedgerJoinForm();
+          detectNodeByGeoThenTimezone();
+
+          setInterval(updateClock, 1000);
+          setInterval(updateMetrics, 3500);
+          setInterval(rotateLocalNodePressure, 2200);
+          setInterval(rotateRewardBaitTag, 2000);
+          setInterval(tickNodeResetTimer, 1000);
+          setInterval(tickHeroTaskUrgency, 1000);
+          setInterval(tickActivityTime, 1000);
+          setInterval(rotateActivity, 2600);
+          scheduleLedgerStream();
+        };
+
+        init();
       })();
     </script>
   </body>
